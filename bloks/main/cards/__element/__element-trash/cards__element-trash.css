@@ -1,0 +1,11 @@
+.cards__element-trash{
+    position: absolute;
+    margin-top: 18px;
+    right: 15px;
+    Width: 18px;
+    Height: 19.3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

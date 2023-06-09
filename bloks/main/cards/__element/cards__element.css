@@ -1,0 +1,9 @@
+.cards__element{
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 361px;
+}
