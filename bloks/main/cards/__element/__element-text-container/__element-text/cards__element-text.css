@@ -1,6 +1,6 @@
 .cards__element-text{
     color: black;
-    width: 246px;
+    width: 215px;
     height: 23px;
     font-weight: 900;
     font-size: 24px;
@@ -11,4 +11,5 @@
     overflow: hidden;
     text-overflow:ellipsis;
     white-space: nowrap; 
+    padding-bottom: 4px;
 }

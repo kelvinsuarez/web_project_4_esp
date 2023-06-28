@@ -1,0 +1,47 @@
+.cards__element-like-rr{
+    background-color: black;
+    width: 5.26px;
+    height: 12px;
+    position: absolute;
+    transform: rotate(44deg);
+    right: 5.2px;
+    bottom: 0.8px;
+}
+.cards__element-like-rl{
+    background-color: black;
+    width: 5.26px;
+    height: 12px;
+    position: absolute;
+    transform: rotate(-44deg);
+    left: 5.3px;
+    bottom: 0.5px;
+}
+.cards__element-like-cr{
+    border-radius: 100%;
+    background-color: black;
+    width: 11px;
+    height: 11.4px;
+    position: absolute;
+    transform: rotate(-45deg);
+    right: 0.4px;
+    top: 0px;
+}
+.cards__element-like-cl{
+    border-radius: 100%;
+    background-color: black;
+    width: 11px;
+    height: 11.5px;
+    position: absolute;
+    transform: rotate(-45deg);
+    left: 0.1px;
+    top: 0.1px;
+}
+.cards__element-like-cc{
+    border-radius: 100%;
+    background-color: black;
+    width: 9.45px;
+    height: 9.5px;
+    position: absolute;
+    transform: rotate(-45deg);
+    bottom: 5.8px;
+}

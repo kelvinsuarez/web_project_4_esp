@@ -9,3 +9,8 @@
     align-items: center;
     flex-direction: column;
 }
+
+.cards__element-trash:hover{
+    filter: brightness(60%) grayscale(100%);
+    cursor: pointer;
+}

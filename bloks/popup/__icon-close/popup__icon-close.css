@@ -1,0 +1,19 @@
+.popup__icon-close{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 385px;
+    top: 85px;
+    height: 40.7px;
+    width: 40.7px;;
+    font-size: 6.5vw;
+    font-family: Arial, sans-serif;
+    font-weight: lighter;
+    transform: rotate(45deg);
+}
+
+.popup__icon-close:hover{
+   color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+}

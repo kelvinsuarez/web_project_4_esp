@@ -1,0 +1,10 @@
+.popup__imput-text{
+    border: none;
+    width: 358px;
+    height: 14px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    border-bottom: 1px solid #000000;
+    opacity: 0.3;
+}

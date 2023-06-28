@@ -9,7 +9,9 @@
     flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
+    position: relative;
 }
+
 
 
 .profile__into,
@@ -17,7 +19,7 @@
 .header__logo,
 .profile__edit-button,
 
-.profile__edit-button-vector,
+
 .profile,
 .profile__avatar,
 .profile__elipce,
@@ -30,9 +32,16 @@
 .cards__element-trash,
 .cards__element-pic,
 .cards__element-text,
-.cards__element-like,
+.cards__element-text-container,
 
-.footer
+
+.footer,
+
+.popup__container,
+.popup__text,
+
+.popup__button-save,
+.popup__icon-close
 {
     border: 1px solid red
   }

@@ -1,0 +1,17 @@
+.popup{
+    min-width: 1280px;
+    min-height: 720px;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    top: 0px;
+    z-index: 1;
+}
+
+.popup_opened{
+    display: flex;
+}
