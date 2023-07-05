@@ -12,6 +12,12 @@
     position: relative;
 }
 
+@media screen and (max-width: 768px) {
+    .root{
+      min-width: 768px;
+      min-height: 1550px;
+    }
+}
 
 
 .profile__into,
@@ -38,10 +44,13 @@
 .footer,
 
 .popup__container,
+.popup__group,
 .popup__text,
 
 .popup__button-save,
-.popup__icon-close
+.popup__icon-close,
+.root,
+.main
 {
     border: 1px solid red
   }

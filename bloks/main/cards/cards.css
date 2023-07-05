@@ -8,3 +8,12 @@
     grid-row-gap: 21px;
     grid-column-gap: 18px;
 }
+
+@media screen and (max-width: 768px) {
+    .cards{
+        grid-template-rows: repeat(3,1fr);
+        grid-template-columns: repeat(2,1fr);
+        max-width: 530px;
+        max-height: 1150px;
+    }
+}

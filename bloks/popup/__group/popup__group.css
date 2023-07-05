@@ -1,0 +1,19 @@
+.popup__group{
+    position: relative;
+    position: fixed;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    top: 148px;
+    width: 36.4%;
+    height: 370px;
+    margin-left: 56px;
+}
+
+@media screen and (max-width: 768px) {
+    .popup__group{
+        height: 230px;
+        top: 100px;
+    }
+}

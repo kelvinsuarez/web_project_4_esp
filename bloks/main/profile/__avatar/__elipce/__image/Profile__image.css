@@ -2,3 +2,10 @@
     width: 120px;
     height: 120px;
 }
+
+@media screen and (max-width: 768px) {
+    .Profile__image{
+        width: 100px;
+        height: 100px;
+    }
+}

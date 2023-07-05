@@ -4,3 +4,10 @@
     width: 120px;
     height: 120px;
 }
+
+@media screen and (max-width: 768px) {
+    .profile__elipce{
+        width: 100px;
+        height: 100px;
+    }
+}

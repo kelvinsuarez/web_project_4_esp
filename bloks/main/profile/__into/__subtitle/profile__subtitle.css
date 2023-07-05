@@ -7,3 +7,10 @@
     line-height: 22px;
     top: 40px;
 }
+
+@media screen and (max-width: 768px) {
+    .profile__subtitle{
+        font-size: 12px;
+        line-height: 15px;
+    }
+}

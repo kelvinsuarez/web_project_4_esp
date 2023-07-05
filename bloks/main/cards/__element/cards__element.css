@@ -7,3 +7,9 @@
     position: relative;
     height: 361px;
 }
+
+@media screen and (max-width: 768px) {
+    .cards__element{
+        height: 330px;
+    }
+}

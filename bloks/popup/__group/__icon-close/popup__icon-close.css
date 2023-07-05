@@ -3,10 +3,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    right: 385px;
-    top: 85px;
-    height: 40.7px;
-    width: 40.7px;;
+    right: 0px;
+    top:0px;
+    margin-top: 0;
+    height: 11%;
+    width: 9%;
     font-size: 6.5vw;
     font-family: Arial, sans-serif;
     font-weight: lighter;
