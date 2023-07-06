@@ -14,3 +14,10 @@
     filter: brightness(60%) grayscale(100%);
     cursor: pointer;
 }
+
+@media screen and (max-width: 320px) {
+    .cards__element-trash{
+        Width: 14px;
+        Height: 15.3px;
+    }
+}

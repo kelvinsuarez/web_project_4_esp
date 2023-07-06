@@ -26,3 +26,11 @@
         height: 33.5px;
     }
 }
+
+@media screen and (max-width: 320px) {
+    .profile__add-button{
+        width: 68px;
+        height: 20px;
+        bottom: 0%;
+    }
+}

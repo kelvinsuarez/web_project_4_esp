@@ -9,3 +9,10 @@
         height: 100px;
     }
 }
+
+@media screen and (max-width: 320px) {
+    .Profile__image{
+        width: 75px;
+        height: 75px;
+    }
+}

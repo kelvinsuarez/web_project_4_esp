@@ -17,3 +17,14 @@
         max-height: 1150px;
     }
 }
+
+@media screen and (max-width: 320px) {
+    .cards{
+        grid-template-rows: repeat(6,1fr);
+        grid-template-columns: repeat(1,1fr);
+        max-width: 220px;
+        max-height: 2100px;
+        margin-left: 9px;
+        margin-top: 30px;
+    }
+}

@@ -9,3 +9,10 @@
         height: 100px;
     }
 }
+
+@media screen and (max-width: 320px) {
+    .profile__avatar{
+        width: 75px;
+        height: 75px;
+    }
+}

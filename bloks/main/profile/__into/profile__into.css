@@ -5,3 +5,11 @@
     height: 64%;
     margin-left: 3.4%;
 }
+
+@media screen and (max-width: 320px) {
+    .profile__into{
+        width: 60%;
+        height: 53px;
+        margin-top: 0;
+    }
+}

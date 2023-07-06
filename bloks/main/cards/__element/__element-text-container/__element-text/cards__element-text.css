@@ -19,3 +19,9 @@
         font-size: 18px;
     }
 }
+
+@media screen and (max-width: 320px) {
+    .cards__element-text{
+        font-size: 14px;
+    }
+}

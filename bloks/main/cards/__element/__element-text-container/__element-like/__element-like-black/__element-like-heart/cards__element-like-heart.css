@@ -1,47 +1,47 @@
 .cards__element-like-rr{
     background-color: black;
-    width: 5.26px;
-    height: 12px;
+    width: 25%;
+    height: 63.16%;
     position: absolute;
     transform: rotate(44deg);
-    right: 4.8px;
-    bottom: 0.8px;
+    right: 22%;
+    bottom: 5%;
 }
 .cards__element-like-rl{
     background-color: black;
-    width: 5.26px;
-    height: 12px;
+    width: 25%;
+    height: 63.16%;
     position: absolute;
     transform: rotate(-44deg);
-    left: 5.3px;
-    bottom: 0.5px;
+    Left: 25.238%;
+    Bottom: 1.5%;
 }
 .cards__element-like-cr{
     border-radius: 100%;
     background-color: black;
-    width: 11px;
-    height: 11.4px;
+    width: 55%;
+    height: 60%;
     position: absolute;
     transform: rotate(-45deg);
-    right: 0.4px;
-    top: 0px;
+    right: 0.904%;
+    top: 0%;
 }
 .cards__element-like-cl{
     border-radius: 100%;
     background-color: black;
-    width: 11px;
-    height: 11.5px;
+    width: 55%;
+    height: 60%;
     position: absolute;
     transform: rotate(-45deg);
-    left: 0.1px;
-    top: 0.1px;
+    left: 0.47%;
+    top: 0.526%;
 }
 .cards__element-like-cc{
     border-radius: 100%;
     background-color: black;
-    width: 9.45px;
-    height: 9.5px;
+    width: 45%;
+    height: 50%;
     position: absolute;
     transform: rotate(-45deg);
-    bottom: 5.8px;
+    bottom: 27.619%;
 }

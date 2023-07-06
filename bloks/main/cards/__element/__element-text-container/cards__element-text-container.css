@@ -8,3 +8,9 @@
     position: relative;
     padding-bottom: 4px;
 }
+
+@media screen and (max-width: 320px) {
+    .cards__element-text-container{
+        margin-top: 18px;
+    }
+}

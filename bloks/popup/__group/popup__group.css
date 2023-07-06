@@ -17,3 +17,11 @@
         top: 100px;
     }
 }
+
+@media screen and (max-width: 320px) {
+    .popup__group{
+        height: 200px;
+        width: 60%;
+        margin-left: 23px;
+    }
+}

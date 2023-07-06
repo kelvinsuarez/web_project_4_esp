@@ -2,3 +2,10 @@
     width: 12px;
     height: 12px;
 }
+
+@media screen and (max-width: 320px) {
+    .profile__edit-button-vector{
+        width: 80%;
+        height: 80%;
+    }
+}

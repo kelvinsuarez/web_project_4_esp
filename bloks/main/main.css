@@ -5,3 +5,9 @@
     flex-direction: column;
     width: 69%;
 }
+
+@media screen and (max-width: 320px) {
+    .main{
+        width: 75%;
+    }
+}

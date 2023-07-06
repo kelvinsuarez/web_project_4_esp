@@ -19,6 +19,13 @@
     }
 }
 
+@media screen and (max-width: 320px) {
+    .root{
+      min-width: 320px;
+      min-height: 1550px;
+    }
+}
+
 
 .profile__into,
 .header,
@@ -31,7 +38,7 @@
 .profile__elipce,
 
 .profile__title,
-.profile__subtitle
+.profile__subtitle,
 
 .cards,
 .cards__element,
