@@ -11,7 +11,7 @@
     overflow: hidden;
     text-overflow:ellipsis;
     white-space: nowrap; 
-    padding-bottom: 4px;
+    padding-bottom: 6px;
 }
 
 @media screen and (max-width: 768px) {
