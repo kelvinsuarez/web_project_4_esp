@@ -22,6 +22,9 @@ la carpeta pages que contiene el indice css de donde se enruta cada bloque css, 
 el archivo normalize css. Proximo esta el archivo principal "index.html" seguido finalmente por el archivo readme
 que brida los detalles de este proyecto.
 
+### Enlace directo a la pagina
+https://kelvinsuarez.github.io/web_project_4_esp/index.html
+
 
 **Figma**
 
