@@ -16,13 +16,13 @@
                 <section class="profile">
                     <div class="profile__avatar">
                         <div class="profile__elipce">
-                            <img class="Profile__image" src="images/profile/profile-pic01.jpg" alt="foto de perfil">
+                            <img class="Profile__image" src="images/profile/profile-siluet.jpg" alt="foto de perfil">
                         </div>
                     </div>
                     <div class="profile__into">
                         <h2 class="profile__title">Jacques Cousteau</h2>
                         <div class="profile__edit-button-square profile__edit-button-square_grey" onclick="onEditButtonClick()" > </div>
-                        <div class="profile__edit-button-square profile__edit-button-square:hover" id="edit-button">
+                        <div class="profile__edit-button-square" id="edit-button">
                             <img class="profile__edit-button-vector" src="images/profile/lapiz.svg" alt="imagen de silueta de lapiz">
                         </div>
                         <h3 class="profile__subtitle">Explorador</h3> 
@@ -168,15 +168,15 @@
                 </section>
             </main>
             <footer class="footer">
-                <h2 class="footer__text">© 2023 Kelvin Suarez</h2>
+                <p class="footer__text">© 2023 Kelvin Suarez</p>
             </footer>
             <div class="popup" id="popup_container" >
                 <div class="popup__group">
                     <h2 class="popup__icon-close popup__icon-close:hover" onclick="onClosePopupClick()">+</h2>
                     <form class="popup__container">
                         <h2 class="popup__text" >Editar Perfil</h2>
-                        <input type="text" placeholder="Nombre" class="popup__imput-text popup__imput-text_name">
-                        <input type="text" placeholder="Acerca de mi" class="popup__imput-text popup__imput-text_job">
+                        <input type="text" placeholder="Jacques Cousteau" class="popup__imput-text popup__imput-text_name">
+                        <input type="text" placeholder="Explorador" class="popup__imput-text popup__imput-text_job">
                         <button class="popup__button-save popup__button-save:hover" onclick="">Guardar</button>
                     </form>
                 </div>
