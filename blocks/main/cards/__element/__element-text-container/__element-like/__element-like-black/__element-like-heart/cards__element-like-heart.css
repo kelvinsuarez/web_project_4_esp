@@ -1,4 +1,4 @@
-.cards__element-like-rr{
+.cards__element-like-right-rectangle{
     background-color: black;
     width: 25%;
     height: 63.16%;
@@ -7,7 +7,7 @@
     right: 22%;
     bottom: 5%;
 }
-.cards__element-like-rl{
+.cards__element-like-left-rectangle{
     background-color: black;
     width: 25%;
     height: 63.16%;
@@ -16,7 +16,7 @@
     Left: 25.238%;
     Bottom: 1.5%;
 }
-.cards__element-like-cr{
+.cards__element-like-right-circle{
     border-radius: 100%;
     background-color: black;
     width: 55%;
@@ -26,7 +26,7 @@
     right: 0.904%;
     top: 0%;
 }
-.cards__element-like-cl{
+.cards__element-like-left-circle{
     border-radius: 100%;
     background-color: black;
     width: 55%;
@@ -36,7 +36,7 @@
     left: 0.47%;
     top: 0.526%;
 }
-.cards__element-like-cc{
+.cards__element-like-center-circle{
     border-radius: 100%;
     background-color: black;
     width: 45%;
