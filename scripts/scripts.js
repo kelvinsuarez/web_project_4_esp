@@ -1,18 +1,38 @@
+// array de targetas
+const initialCards = [
+    {
+      name: "Valle de Yosemite",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg"
+    },
+    {
+      name: "Lago Louise",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg"
+    },
+    {
+      name: "Montañas Calvas",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg"
+    },
+    {
+      name: "Latemar",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg"
+    },
+    {
+      name: "Parque Nacional de la Vanoise",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg"
+    },
+    {
+      name: "Lago di Braies",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg"
+    }
+  ]; 
 
+// obtengamos la variable para la ventana de formulario de perfil
 let popup = document.querySelector(".popup");
 
-// Lo siguiente es el manipulador (handler) de entrega de formularios, aunque
-// no se enviará en ningún sitio todavía
-
-// Observa que el nombre de la función comienza con un verbo
-// y describe exactamente lo que hace la función
 function handleProfileFormSubmit(evt) {
     // Esta línea impide que el navegador
     // entregue el formulario en su forma predeterminada.
     evt.preventDefault();
-    // Una vez hecho esto, podemos definir nuestra propia forma de entregar el formulario.
-    // Lo explicaremos todo con más detalle después.
-
     // Busquemos los campos del formulario en el DOM
     let nameValue = popup.querySelector(".popup__imput-text_name").value;
     let jobValue = popup.querySelector(".popup__imput-text_job").value;
@@ -27,23 +47,18 @@ function handleProfileFormSubmit(evt) {
         profilejob.innerText= "N/A";
     }
     
-    
-    togglePopupVisility();
-
-    
-    // Obtén los valores de cada campo desde la propiedad de valor correspondiente
-
-    // Selecciona los elementos donde se introducirán los valores de los campos
-
-    // Inserta nuevos valores utilizando el textContent
-    // propiedad del método querySelector()
+    onClosePopupClick();
 }
 
+const closeProfileButton = document.querySelector(".popup__icon-close");
+const editButton = document.querySelector(".profile__edit-button-square");
+editButton.addEventListener("click", onEditButtonClick);
+closeProfileButton.addEventListener("click", onClosePopupClick);
 // Conecta el manipulador (handler) al formulario:
-// se observará el evento de entrega
 popup.addEventListener('submit', handleProfileFormSubmit); 
 
 
+// controlador del boton editar perfil
 function onEditButtonClick(){
     togglePopupVisility();
 }
@@ -58,17 +73,121 @@ function togglePopupVisility(){
 
 
 
-// crear variable objeto con elementos de la clase "cards__element-like"
-var like = document.querySelectorAll(".cards__element-like");
+// controlador del boton adaptar lugar
+function onAddButtonClick(){
+    togglePopupPlaceVisility();
+}
 
-// Recorrer cada div de clase "cards__element-like"
-like.forEach(function(divLike) {
-  // Agregar un controlador de eventos de clic a cada div de clase "cards__element-like"
-  divLike.addEventListener("click", function() {
-    // Obtener el div con clase "cards__element-like-black"
-    var likeElement = this.querySelector(".cards__element-like-black");
-    
-    // Agregar o eliminar la nueva clase "cards__element-like-black_on" al div con clase "cards__element-like-black" ya existente
-    likeElement.classList.toggle("cards__element-like-black_on");
-  });
+function onClosePopupPlaceClick(){
+    togglePopupPlaceVisility();
+}
+function togglePopupPlaceVisility(){
+    let popupPlace = document.querySelector("#popup-place_container");
+    popupPlace.classList.toggle("popup-place_opened");
+}
+
+const closePlaceButton = document.querySelector(".popup-place__icon-close");
+const addButton = document.querySelector(".profile__add-button");
+addButton.addEventListener("click", onAddButtonClick);
+closePlaceButton.addEventListener("click", onClosePopupPlaceClick);
+
+// obtengamos la variable para la ventana de formulario de lugares
+let popupPlace = document.querySelector(".popup-place");
+let cardsContainer = document.querySelector(".cards");
+const cardTemplate = document.querySelector("#cards-template");
+const cardElement = cardTemplate.content.cloneNode(true);
+
+// funcion para agregar un nuvo lugar
+const addPlace = document.querySelector(".popup-place__button-save");
+addPlace.addEventListener("click",(evt) => {
+    evt.preventDefault();
+    const titleValue = document.querySelector(".popup-place__imput-text_title").value;
+    const picValue = document.querySelector(".popup-place__imput-text_image").value;
+    const newCard = {
+        name : titleValue,
+        link : picValue
+    }
+    initialCards.unshift(newCard);
+    cleanHtml();
+    init();
+    onClosePopupPlaceClick();
 });
+
+function cleanHtml(){
+    while (cardsContainer.firstChild){
+        cardsContainer.removeChild(cardsContainer.firstChild);
+    }
+}
+    
+ 
+
+//controlador de evetons para inicializar las 6 cartas
+document.addEventListener("DOMContentLoaded", init);
+function toggleLikeElement() {
+    var likeElement = this.querySelector(".cards__element-like-black");
+    likeElement.classList.toggle("cards__element-like-black_on");
+}
+
+
+
+function init(){
+    const card = initialCards.map(card =>{
+        const cardTemplate = document.querySelector("#cards-template");
+        const cardElement = cardTemplate.content.cloneNode(true);
+
+        const cardTitle = cardElement.querySelector(".cards__element-text");
+        cardTitle.textContent = card.name;
+        
+        const cardpic = cardElement.querySelector(".cards__element-pic");
+        cardpic.src = card.link;
+
+        const cardContainer = document.querySelector(".cards");
+        cardContainer.append(cardElement);
+
+        var like = document.querySelectorAll(".cards__element-like");
+
+        // Recorrer cada div de clase "cards__element-like"
+        like.forEach(function(divLike) {
+            divLike.addEventListener("click", toggleLikeElement);
+        });
+        let trash = document.querySelectorAll(".cards__element-trash");
+        trash.forEach(function(deleteDiv) {
+            deleteDiv.addEventListener("click", function() {
+                let cardElement = this.closest(".cards__element");
+                cardElement.remove();
+            })
+        })
+
+    }) 
+}
+
+
+/*function init() {
+    const cardTemplate = document.querySelector("#cards-template");
+    const cardContainer = document.querySelector(".cards");
+
+    initialCards.forEach(function(card) {
+        const cardElement = cardTemplate.content.firstElementChild.cloneNode(true);
+
+        const cardTitle = cardElement.querySelector(".cards__element-text");
+        cardTitle.textContent = card.name;
+
+        const cardpic = cardElement.querySelector(".cards__element-pic");
+        cardpic.src = card.link;
+
+        cardContainer.append(cardElement);
+    });
+
+    var like = document.querySelectorAll(".cards__element-like");
+    like.forEach(function(divLike) {
+        divLike.addEventListener("click", toggleLikeElement);
+    });
+
+    let trash = document.querySelectorAll(".cards__element-trash");
+    trash.forEach(function(deleteDiv) {
+        deleteDiv.addEventListener("click", function() {
+            let cardElement = this.closest(".cards__element");
+            cardElement.remove();
+        });
+    });
+}*/

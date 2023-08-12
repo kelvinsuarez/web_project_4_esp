@@ -1,3 +1,19 @@
 .cards__element-pic{
     margin-top: 0px;
+    width: 283px;
+    height: 283px;
+}
+
+@media screen and (max-width: 768px) {
+    .cards__element-pic{
+        width: 256px;
+        height: 256px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .cards__element-pic{
+        width: 220px;
+        height: 220px;
+    }
 }

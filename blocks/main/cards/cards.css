@@ -1,6 +1,5 @@
 .cards{
     max-width: 882px;
-    max-height: 743px;
     margin-top: 46px;
     display: grid;
     grid-template-rows: repeat(2,1fr);
@@ -14,7 +13,6 @@
         grid-template-rows: repeat(3,1fr);
         grid-template-columns: repeat(2,1fr);
         max-width: 530px;
-        max-height: 1150px;
     }
 }
 
@@ -23,7 +21,6 @@
         grid-template-rows: repeat(6,1fr);
         grid-template-columns: repeat(1,1fr);
         max-width: 220px;
-        max-height: 2100px;
         margin-left: 9px;
         margin-top: 30px;
     }

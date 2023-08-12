@@ -21,7 +21,7 @@
                     </div>
                     <div class="profile__into">
                         <h2 class="profile__title">Jacques Cousteau</h2>
-                        <div class="profile__edit-button-square profile__edit-button-square_grey" onclick="onEditButtonClick()" > </div>
+                        <div class="profile__edit-button-square profile__edit-button-square_grey" > </div>
                         <div class="profile__edit-button-square" id="edit-button">
                             <img class="profile__edit-button-vector" src="images/profile/lapiz.svg" alt="imagen de silueta de lapiz">
                         </div>
@@ -33,14 +33,15 @@
                     </div>
                 </section>
                 <section class="cards">
+                    <template id="cards-template">
                         <div class="cards__element">
-                            <img class="cards__element-pic" src="images/cards/Valle-Yosemite.jpg" alt="Valle de Yosemite">
+                            <img class="cards__element-pic" src="" alt="">
                             
                             <img class="cards__element-trash cards__element-trash:hover" src="images/cards/trash-all.svg" alt="basurero">
                             
                             <div class="cards__element-text-container">
                                 <h2 class="cards__element-text">
-                                    Valle de Yosemite
+                                    .
                                 </h2>
                                 <div class="cards__element-like cards__element-like:hover" >
                                     <img src="images/cards/like-grey.svg" alt="vector corazon">
@@ -54,116 +55,7 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="cards__element">
-                            <img class="cards__element-pic" src="images/cards/lago-louise.jpg" alt="Lago Louise">
-                            
-                            <img class="cards__element-trash cards__element-trash:hover" src="images/cards/trash-all.svg" alt="basurero">
-
-                            <div class="cards__element-text-container">
-                                <h2 class="cards__element-text">
-                                    Lago Louise
-                                </h2>
-                                <div class="cards__element-like cards__element-like:hover">
-                                    <img src="images/cards/like-grey.svg" alt="vector corazon">
-                                    <div class="cards__element-like-black">
-                                        <div class="cards__element-like-right-rectangle"></div>
-                                        <div class="cards__element-like-left-rectangle"></div>
-                                        <div class="cards__element-like-right-circle"></div>
-                                        <div class="cards__element-like-left-circle"></div>
-                                        <div class="cards__element-like-center-circle"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="cards__element">
-                            <img class="cards__element-pic" src="images/cards/montañas-calvas.jpg" alt="Montañas Calvas">
-                            
-                            <img class="cards__element-trash cards__element-trash:hover" src="images/cards/trash-all.svg" alt="basurero">
-                            
-                            <div class="cards__element-text-container">
-                                <h2 class="cards__element-text">
-                                    Montañas Calvas
-                                </h2>
-                                <div class="cards__element-like cards__element-like:hover" >
-                                    <img src="images/cards/like-grey.svg" alt="vector corazon">
-                                    <div class="cards__element-like-black">
-                                        <div class="cards__element-like-right-rectangle"></div>
-                                        <div class="cards__element-like-left-rectangle"></div>
-                                        <div class="cards__element-like-right-circle"></div>
-                                        <div class="cards__element-like-left-circle"></div>
-                                        <div class="cards__element-like-center-circle"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="cards__element">
-                            <img class="cards__element-pic" src="images/cards/latemar.jpg" alt="Latemar">
-                            
-                            <img class="cards__element-trash cards__element-trash:hover" src="images/cards/trash-all.svg" alt="basurero">
-                            
-                            <div class="cards__element-text-container">
-                                <h2 class="cards__element-text">
-                                    Latemar
-                                </h2>
-                                <div class="cards__element-like cards__element-like:hover" >
-                                    <img src="images/cards/like-grey.svg" alt="vector corazon">
-                                    <div class="cards__element-like-black">
-                                        <div class="cards__element-like-right-rectangle"></div>
-                                        <div class="cards__element-like-left-rectangle"></div>
-                                        <div class="cards__element-like-right-circle"></div>
-                                        <div class="cards__element-like-left-circle"></div>
-                                        <div class="cards__element-like-center-circle"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="cards__element">
-                            <img class="cards__element-pic" src="images/cards/Vanoise_National_Park.jpg" alt="Vanois National Park">
-                            
-                            <img class="cards__element-trash cards__element-trash:hover" src="images/cards/trash-all.svg" alt="basurero">
-                            
-                            <div class="cards__element-text-container">
-                                <h2 class="cards__element-text">
-                                    Vanois National Park
-                                </h2>
-                                <div class="cards__element-like cards__element-like:hover" >
-                                    <img src="images/cards/like-grey.svg" alt="vector corazon">
-                                    <div class="cards__element-like-black">
-                                        <div class="cards__element-like-right-rectangle"></div>
-                                        <div class="cards__element-like-left-rectangle"></div>
-                                        <div class="cards__element-like-right-circle"></div>
-                                        <div class="cards__element-like-left-circle"></div>
-                                        <div class="cards__element-like-center-circle"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="cards__element">
-                            <img class="cards__element-pic" src="images/cards/lago-di-braies.jpg" alt="Lago di Braies">
-                            
-                            <img class="cards__element-trash cards__element-trash:hover" src="images/cards/trash-all.svg" alt="basurero">
-                            
-                            <div class="cards__element-text-container">
-                                <h2 class="cards__element-text">
-                                    Lago di Braies
-                                </h2>
-                                <div class="cards__element-like cards__element-like:hover" >
-                                    <img src="images/cards/like-grey.svg" alt="vector corazon">
-                                    <div class="cards__element-like-black">
-                                        <div class="cards__element-like-right-rectangle"></div>
-                                        <div class="cards__element-like-left-rectangle"></div>
-                                        <div class="cards__element-like-right-circle"></div>
-                                        <div class="cards__element-like-left-circle"></div>
-                                        <div class="cards__element-like-center-circle"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    </template>
 
                 </section>
             </main>
@@ -172,16 +64,50 @@
             </footer>
             <div class="popup" id="popup_container" >
                 <div class="popup__group">
-                    <h2 class="popup__icon-close popup__icon-close:hover" onclick="onClosePopupClick()">+</h2>
+                    <h2 class="popup__icon-close popup__icon-close:hover">+</h2>
                     <form class="popup__container">
                         <h2 class="popup__text" >Editar Perfil</h2>
                         <input type="text" placeholder="Nombre" value="Jacques Cousteau" class="popup__imput-text popup__imput-text_name">
                         <input type="text" placeholder="A cerca de mi" value="Explorador" class="popup__imput-text popup__imput-text_job">
-                        <button class="popup__button-save popup__button-save:hover" onclick="">Guardar</button>
+                        <button class="popup__button-save popup__button-save:hover" >Guardar</button>
+                    </form>
+                </div>
+            </div>
+            <div class="popup-place" id="popup-place_container" >
+                <div class="popup-place__group">
+                    <h2 class="popup-place__icon-close popup-place__icon-close:hover">+</h2>
+                    <form class="popup-place__container">
+                        <h2 class="popup-place__text" >Nuevo Lugar</h2>
+                        <input type="text" placeholder="Titulo" value="" class="popup-place__imput-text popup-place__imput-text_title">
+                        <input type="text" placeholder="Imagen URL" value="" class="popup-place__imput-text popup-place__imput-text_image">
+                        <button class="popup-place__button-save popup__button-save:hover">Guardar</button>
                     </form>
                 </div>
             </div>
         </div>
+        <template id="cards-template">
+            <div class="cards__element">
+                <img class="cards__element-pic" src="" alt="">
+                
+                <img class="cards__element-trash cards__element-trash:hover" src="images/cards/trash-all.svg" alt="basurero">
+                
+                <div class="cards__element-text-container">
+                    <h2 class="cards__element-text">
+                        .
+                    </h2>
+                    <div class="cards__element-like cards__element-like:hover" >
+                        <img src="images/cards/like-grey.svg" alt="vector corazon">
+                        <div class="cards__element-like-black">
+                            <div class="cards__element-like-right-rectangle"></div>
+                            <div class="cards__element-like-left-rectangle"></div>
+                            <div class="cards__element-like-right-circle"></div>
+                            <div class="cards__element-like-left-circle"></div>
+                            <div class="cards__element-like-center-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
         <script src="scripts/scripts.js"></script>
     </body>
 </html>
