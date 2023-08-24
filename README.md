@@ -22,6 +22,13 @@ la carpeta pages que contiene el indice css de donde se enruta cada bloque css, 
 el archivo normalize css. Proximo esta el archivo principal "index.html" seguido finalmente por el archivo readme
 que brida los detalles de este proyecto.
 
+### funciones y animaciones
+
+cada ventana modal como las ventana de clase popup y popup-place cuentan con funciones instegradas, para popup, la funcion de editar perfil dando al usuario la opcion de mostral en la pantalla principal el nombre y ocupacion que elijan, para este bloque se le asigno una sutil animacion de transicion de desvanesido  tanto en la entrada como en la salida.
+De la misma manera fue asignado este efecto para la ventana popup-place cuya funcion es agregar una nueva carta de imagen a la seccion place esta toma de entrada el nombre del lugar y la url de la imagen que sera introducida.
+
+Para la seccion cards fueron cargadas 6 cartas automaticamente mediante una array que contiene el nombre y las url de dichas imagenes. Para cargar estas imagenes fue necesario la realizacion de una funcion mediante Javascrip y cada carta contiene funciones integradas como la de poder eliminarse, hacer click en la imagen para agrandarla, esta con el mismo efecto de desvanecimiento de popup y popup-place para la entrada y la salida, y tambien la funcion para dar like haciendo click en el icono de corazón esta tambien con una animación de escala para simular un latido y transicion de color de gris a negro.
+
 ### Enlace directo a la pagina
 https://kelvinsuarez.github.io/web_project_4_esp/index.html
 

@@ -50,6 +50,7 @@ function handleProfileFormSubmit(evt) {
     onClosePopupClick();
 }
 
+
 const closeProfileButton = document.querySelector(".popup__icon-close");
 const editButton = document.querySelector(".profile__edit-button-square");
 editButton.addEventListener("click", onEditButtonClick);
@@ -63,9 +64,18 @@ function onEditButtonClick(){
     togglePopupVisility();
 }
 
+// controlador del boton cerrar editar perfil
 function onClosePopupClick(){
-    togglePopupVisility();
+    const popup = document.querySelector("#popup_container");
+    popup.style.animation = 'fadeout 0.5s ease';
+    //agregando animacion para el cierre de popup
+    popup.addEventListener('animationend', function onAnimationEnd() {
+        popup.style.animation = '';
+        togglePopupVisility();
+        popup.removeEventListener('animationend', onAnimationEnd);
+    });
 }
+
 function togglePopupVisility(){
     let popup = document.querySelector("#popup_container");
     popup.classList.toggle("popup_opened");
@@ -77,19 +87,28 @@ function togglePopupVisility(){
 function onAddButtonClick(){
     togglePopupPlaceVisility();
 }
-
+// controlador del boton cerrar agregar lugar
 function onClosePopupPlaceClick(){
-    togglePopupPlaceVisility();
+    let popupPlace = document.querySelector("#popup-place_container");
+    popupPlace.style.animation = 'fadeout 0.5s ease';
+    //agregando animacion para el cierre de popupPlace
+    popupPlace.addEventListener('animationend', function onAnimationEnd() {
+        popupPlace.style.animation = '';
+        togglePopupPlaceVisility();
+        popupPlace.removeEventListener('animationend', onAnimationEnd);
+    });
 }
 function togglePopupPlaceVisility(){
     let popupPlace = document.querySelector("#popup-place_container");
     popupPlace.classList.toggle("popup-place_opened");
 }
 
+//Botones para abrir y cerrar ventana popup-place
 const closePlaceButton = document.querySelector(".popup-place__icon-close");
 const addButton = document.querySelector(".profile__add-button");
 addButton.addEventListener("click", onAddButtonClick);
 closePlaceButton.addEventListener("click", onClosePopupPlaceClick);
+
 
 // obtengamos la variable para la ventana de formulario de lugares
 let popupPlace = document.querySelector(".popup-place");
@@ -123,13 +142,34 @@ function cleanHtml(){
 
 //controlador de evetons para inicializar las 6 cartas
 document.addEventListener("DOMContentLoaded", init);
+
+//funcion para dar like (encender el corazon negro)
 function toggleLikeElement() {
-    var likeElement = this.querySelector(".cards__element-like-black");
+    let likeElement = this.querySelector(".cards__element-like-black");
     likeElement.classList.toggle("cards__element-like-black_on");
 }
 
 
+//funcion para abrir las imagenes
+function openZoomImage() {
+    let zoomImage = document.querySelector("#image-zoom_container");
+    zoomImage.classList.add("image-zoom_opened");
 
+}
+//funcion para cerrar las imagenes
+function closeZoomImage() {
+    let zoomImage = document.querySelector("#image-zoom_container");
+    zoomImage.style.animation = 'fadeout 0.5s ease';
+    //agregando animacion al cierre de imagenes
+    zoomImage.addEventListener('animationend', function onAnimationEnd() {
+        zoomImage.style.animation = ''; // Restablecer la animación después de que termine
+        zoomImage.classList.remove("image-zoom_opened");
+        zoomImage.removeEventListener('animationend', onAnimationEnd);
+    });
+}
+
+
+//Funcion para inicializar las 6 cartas y manter las funciones dentro de ellas
 function init(){
     const card = initialCards.map(card =>{
         const cardTemplate = document.querySelector("#cards-template");
@@ -144,12 +184,27 @@ function init(){
         const cardContainer = document.querySelector(".cards");
         cardContainer.append(cardElement);
 
-        var like = document.querySelectorAll(".cards__element-like");
+        const like = document.querySelectorAll(".cards__element-like");
 
         // Recorrer cada div de clase "cards__element-like"
         like.forEach(function(divLike) {
             divLike.addEventListener("click", toggleLikeElement);
         });
+
+        const viewImage = document.querySelectorAll(".cards__element-pic");
+        viewImage.forEach(function(zoom){
+            zoom.addEventListener("click", (evt) =>{
+
+                const clickedPic = evt.currentTarget; 
+                const srcValue = clickedPic.getAttribute("src");
+                const picZoom =document.querySelector(".image-zoom__container");
+                picZoom.src= srcValue;
+                
+                openZoomImage();
+            });
+        })
+        
+        //remover carta
         let trash = document.querySelectorAll(".cards__element-trash");
         trash.forEach(function(deleteDiv) {
             deleteDiv.addEventListener("click", function() {
@@ -161,33 +216,10 @@ function init(){
     }) 
 }
 
+//cerrar imagen
+const closeImage = document.querySelectorAll(".image-zoom__icon-close");
+        closeImage.forEach(function(closeZoom){
+            closeZoom.addEventListener("click", closeZoomImage);
 
-/*function init() {
-    const cardTemplate = document.querySelector("#cards-template");
-    const cardContainer = document.querySelector(".cards");
+        })
 
-    initialCards.forEach(function(card) {
-        const cardElement = cardTemplate.content.firstElementChild.cloneNode(true);
-
-        const cardTitle = cardElement.querySelector(".cards__element-text");
-        cardTitle.textContent = card.name;
-
-        const cardpic = cardElement.querySelector(".cards__element-pic");
-        cardpic.src = card.link;
-
-        cardContainer.append(cardElement);
-    });
-
-    var like = document.querySelectorAll(".cards__element-like");
-    like.forEach(function(divLike) {
-        divLike.addEventListener("click", toggleLikeElement);
-    });
-
-    let trash = document.querySelectorAll(".cards__element-trash");
-    trash.forEach(function(deleteDiv) {
-        deleteDiv.addEventListener("click", function() {
-            let cardElement = this.closest(".cards__element");
-            cardElement.remove();
-        });
-    });
-}*/

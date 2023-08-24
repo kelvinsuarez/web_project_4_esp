@@ -1,0 +1,16 @@
+.popup-place__imput-text{
+    border: none;
+    width: 83%;
+    height: 7%;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    border-bottom: 1px solid #000000;
+    opacity: 0.3;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .popup-place__imput-text{
+        font-size: 10px;
+    }
+  }

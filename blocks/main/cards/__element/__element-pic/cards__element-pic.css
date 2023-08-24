@@ -4,6 +4,9 @@
     height: 283px;
 }
 
+.cards__element-pic:hover{
+    cursor: pointer;
+}
 @media screen and (max-width: 768px) {
     .cards__element-pic{
         width: 256px;

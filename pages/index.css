@@ -33,3 +33,14 @@
 @import url(../blocks/popup/__group/__container/__imput-text/popup__imput-text.css);
 @import url(../blocks/popup/__group/__container/__button-save/popup__button-save.css);
 @import url(../blocks/popup/__group/__icon-close/popup__icon-close.css);
+@import url(../blocks/popup-place/popup-place.css);
+@import url(../blocks/popup-place/__group/popup-place__group.css);
+@import url(../blocks/popup-place/__group/container/popup-place__container.css);
+@import url(../blocks/popup-place/__group/container/__button-save/popup-place__button-save.css);
+@import url(../blocks/popup-place/__group/container/__imput-text/popup-place__imput-text.css);
+@import url(../blocks/popup-place/__group/container/__text/popup-place__text.css);
+@import url(../blocks/popup-place/__group/icon-close/popup-place__icon-close.css);
+@import url(../blocks/image-zoom/image-zoom.css);
+@import url(../blocks/image-zoom/__group/image-zoom__group.css);
+@import url(../blocks/image-zoom/__group/__container/image-zoom__container.css);
+@import url(../blocks/image-zoom/__group/__icon-close/image-zoom__icon-close.css);

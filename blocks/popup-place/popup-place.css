@@ -1,41 +1,42 @@
 @-webkit-keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
 }
 
 @-webkit-keyframes fadeout {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
+  from {
+      opacity: 1;
+  }
+  to {
+      opacity: 0;
+  }
 }
 
 @keyframes fadeout {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
+  from {
+      opacity: 1;
+  }
+  to {
+      opacity: 0;
+  }
 }
 
 
-.popup{
+
+.popup-place{
     min-width: 100%;
     min-height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
@@ -60,17 +61,17 @@
     -webkit-transition: opacity 0.5s ease;
     -o-transition: opacity 0.5s ease;
     transition: opacity 0.5s ease;
-}
-
-.popup_opened{
+  }
+  
+  .popup-place_opened{
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-animation: fadeIn 0.5s ease;
             animation: fadeIn 0.5s ease;
-}
+  }
 
-.popup_opened:not(.popup_opened) {
+  .popup-place:not(.popup-place_opened){
     opacity: 0;
     pointer-events: none;
-}
+  }

@@ -35,7 +35,7 @@
                 <section class="cards">
                     <template id="cards-template">
                         <div class="cards__element">
-                            <img class="cards__element-pic" src="" alt="">
+                            <img class="cards__element-pic .cards__element-pic:hover" src="images/cards/latemar.jpg" alt="">
                             
                             <img class="cards__element-trash cards__element-trash:hover" src="images/cards/trash-all.svg" alt="basurero">
                             
@@ -46,11 +46,11 @@
                                 <div class="cards__element-like cards__element-like:hover" >
                                     <img src="images/cards/like-grey.svg" alt="vector corazon">
                                     <div class="cards__element-like-black">
-                                        <div class="cards__element-like-right-rectangle"></div>
-                                        <div class="cards__element-like-left-rectangle"></div>
-                                        <div class="cards__element-like-right-circle"></div>
-                                        <div class="cards__element-like-left-circle"></div>
-                                        <div class="cards__element-like-center-circle"></div>
+                                        <div class="cards__element-like-right-rectangle cards__element-like-parts"></div>
+                                        <div class="cards__element-like-left-rectangle cards__element-like-parts"></div>
+                                        <div class="cards__element-like-right-circle cards__element-like-parts"></div>
+                                        <div class="cards__element-like-left-circle cards__element-like-parts"></div>
+                                        <div class="cards__element-like-center-circle cards__element-like-parts"></div>
                                     </div>
                                 </div>
                             </div>
@@ -62,6 +62,12 @@
             <footer class="footer">
                 <p class="footer__text">© 2023 Kelvin Suarez</p>
             </footer>
+            <div class="image-zoom" id="image-zoom_container" >
+                <div class="image-zoom__group">
+                    <span class="image-zoom__icon-close image-zoom__icon-close:hover">+</span>
+                    <img class="image-zoom__container" src="https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg" alt="imagen agrandada">
+                </div>
+            </div>
             <div class="popup" id="popup_container" >
                 <div class="popup__group">
                     <h2 class="popup__icon-close popup__icon-close:hover">+</h2>
