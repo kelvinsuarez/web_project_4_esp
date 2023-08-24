@@ -13,7 +13,7 @@
 }
 
 .cards__element-like-right-rectangle{
-    
+    background-color: black;
     width: 25%;
     height: 63.16%;
     position: absolute;
@@ -22,7 +22,7 @@
     bottom: 5%;
 }
 .cards__element-like-left-rectangle{
-    
+    background-color: black;
     width: 25%;
     height: 63.16%;
     position: absolute;
@@ -32,7 +32,7 @@
 }
 .cards__element-like-right-circle{
     border-radius: 100%;
-    
+    background-color: black;
     width: 55%;
     height: 60%;
     position: absolute;
@@ -42,7 +42,7 @@
 }
 .cards__element-like-left-circle{
     border-radius: 100%;
-    
+    background-color: black;
     width: 55%;
     height: 60%;
     position: absolute;
@@ -52,7 +52,7 @@
 }
 .cards__element-like-center-circle{
     border-radius: 100%;
-    
+    background-color: black;
     width: 45%;
     height: 50%;
     position: absolute;
