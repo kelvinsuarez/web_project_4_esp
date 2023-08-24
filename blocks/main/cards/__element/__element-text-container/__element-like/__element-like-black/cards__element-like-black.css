@@ -34,7 +34,7 @@
     height: 100%;
     margin: 0%;
     -webkit-animation: heartbeat 2s ease-in-out;
-            animation: heartbeat 2s ease-in-out;;
+            animation: heartbeat 2s ease-in-out;
 }
 
 .cards__element-like-black_on{

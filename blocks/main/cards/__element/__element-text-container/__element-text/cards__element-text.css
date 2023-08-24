@@ -10,7 +10,7 @@
     position: relative;
     overflow: hidden;
     text-overflow:ellipsis;
-    white-space: nowrap; 
+    white-space: nowrap;
     padding-bottom: 6px;
 }
 
