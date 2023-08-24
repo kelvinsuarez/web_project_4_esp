@@ -2,8 +2,8 @@
     position: absolute;
     margin-top: 18px;
     right: 15px;
-    Width: 18px;
-    Height: 19.3px;
+    width: 18px;
+    height: 19.3px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,7 +17,7 @@
 
 @media screen and (max-width: 320px) {
     .cards__element-trash{
-        Width: 14px;
-        Height: 15.3px;
+        width: 14px;
+        height: 15.3px;
     }
 }
