@@ -1,4 +1,4 @@
-@-webkit-keyframes fadeIn {
+@-webkit-keyframes fadein {
   from {
       opacity: 0;
   }
@@ -7,7 +7,7 @@
   }
 }
 
-@keyframes fadeIn {
+@keyframes fadein {
   from {
       opacity: 0;
   }
@@ -56,8 +56,8 @@
             justify-content: center;
     top: 0px;
     z-index: 1;
-    -webkit-animation: fadeIn 0.5s ease;
-            animation: fadeIn 0.5s ease;
+    -webkit-animation: fadein 0.5s ease;
+            animation: fadein 0.5s ease;
     -webkit-transition: opacity 0.5s ease;
     -o-transition: opacity 0.5s ease;
     transition: opacity 0.5s ease;
@@ -67,8 +67,8 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-animation: fadeIn 0.5s ease;
-            animation: fadeIn 0.5s ease;
+    -webkit-animation: fadein 0.5s ease;
+            animation: fadein 0.5s ease;
   }
 
   .popup-place:not(.popup-place_opened){
