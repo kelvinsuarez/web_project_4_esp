@@ -2,8 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    Width: 21px;
-    Height: 19px;
+    width: 21px;
+    height: 19px;
     position: absolute;
     right: 3px;
     top: 5px;
@@ -18,7 +18,7 @@
 
 @media screen and (max-width: 320px) {
     .cards__element-like{
-        Width: 16px;
-        Height: 14px;
+        width: 16px;
+        height: 14px;
     }
 }
