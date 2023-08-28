@@ -27,7 +27,12 @@ const initialCards = [
   ]; 
 
 // obtengamos la variable para la ventana de formulario de perfil
-let popup = document.querySelector(".popup");
+const popup = document.querySelector(".popup");
+// obtengamos la variable para la ventana de formulario de lugares
+const popupPlace = document.querySelector(".popup-place");
+const cardsContainer = document.querySelector(".cards");
+const cardTemplate = document.querySelector("#cards-template");
+const cardElement = cardTemplate.content.cloneNode(true);
 
 function handleProfileFormSubmit(evt) {
     // Esta línea impide que el navegador
@@ -109,12 +114,6 @@ const addButton = document.querySelector(".profile__add-button");
 addButton.addEventListener("click", onAddButtonClick);
 closePlaceButton.addEventListener("click", onClosePopupPlaceClick);
 
-
-// obtengamos la variable para la ventana de formulario de lugares
-let popupPlace = document.querySelector(".popup-place");
-let cardsContainer = document.querySelector(".cards");
-const cardTemplate = document.querySelector("#cards-template");
-const cardElement = cardTemplate.content.cloneNode(true);
 
 // funcion para agregar un nuvo lugar
 const addPlace = document.querySelector(".popup-place__button-save");
