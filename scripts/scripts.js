@@ -2,41 +2,51 @@
 const initialCards = [
     {
       name: "Valle de Yosemite",
-      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg"
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg",
     },
     {
       name: "Lago Louise",
-      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg"
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg",
     },
     {
       name: "Montañas Calvas",
-      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg"
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg",
     },
     {
       name: "Latemar",
-      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg"
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg",
     },
     {
       name: "Parque Nacional de la Vanoise",
-      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg"
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg",
     },
     {
       name: "Lago di Braies",
-      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg"
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
     }
   ]; 
 
-// obtengamos la variable para la ventana de formulario de perfil
-const popup = document.querySelector(".popup");
-// obtengamos la variable para la ventana de formulario de lugares
-const popupPlace = document.querySelector(".popup-place");
+// variables para la plantilla contenedora de cartas
 const cardsContainer = document.querySelector(".cards");
 const cardTemplate = document.querySelector("#cards-template");
 const cardElement = cardTemplate.content.cloneNode(true);
+// variables para la ventana de formulario popup de perfil
+const popup = document.querySelector(".popup");
+const closeProfileButton = document.querySelector(".popup__icon-close");
+const editButton = document.querySelector(".profile__edit-button-square");
+//variables para la ventana de formulario popup-place de agregar lugares
+const popupPlace = document.querySelector(".popup-place");
+const closePlaceButton = document.querySelector(".popup-place__icon-close");
+const addButton = document.querySelector(".profile__add-button");
+//cerrar imagen
+const closeImage = document.querySelectorAll(".image-zoom__icon-close");
+closeImage.forEach(function(closeZoom){
+    closeZoom.addEventListener("click", closeZoomImage);
+})
 
+//funcion para editar perfil
 function handleProfileFormSubmit(evt) {
-    // Esta línea impide que el navegador
-    // entregue el formulario en su forma predeterminada.
+    // Esta línea impide que el navegador entregue el formulario en su forma predeterminada.
     evt.preventDefault();
     // Busquemos los campos del formulario en el DOM
     let nameValue = popup.querySelector(".popup__imput-text_name").value;
@@ -54,21 +64,10 @@ function handleProfileFormSubmit(evt) {
     
     onClosePopupClick();
 }
-
-
-const closeProfileButton = document.querySelector(".popup__icon-close");
-const editButton = document.querySelector(".profile__edit-button-square");
-editButton.addEventListener("click", onEditButtonClick);
-closeProfileButton.addEventListener("click", onClosePopupClick);
-// Conecta el manipulador (handler) al formulario:
-popup.addEventListener('submit', handleProfileFormSubmit); 
-
-
 // controlador del boton editar perfil
 function onEditButtonClick(){
     togglePopupVisility();
 }
-
 // controlador del boton cerrar editar perfil
 function onClosePopupClick(){
     const popup = document.querySelector("#popup_container");
@@ -80,15 +79,26 @@ function onClosePopupClick(){
         popup.removeEventListener('animationend', onAnimationEnd);
     });
 }
-
 function togglePopupVisility(){
     let popup = document.querySelector("#popup_container");
     popup.classList.toggle("popup_opened");
 }
 
 
-
-// controlador del boton adaptar lugar
+//funcion para agregar lugar
+function handledAddPlaceFormSubmit (evt){
+    evt.preventDefault();
+    const titleValue = document.querySelector(".popup-place__imput-text_title").value;
+    const picValue = document.querySelector(".popup-place__imput-text_image").value;
+    const newCard = {
+        name : titleValue,
+        link : picValue
+    }
+    initialCards.unshift(newCard);
+    onClosePopupPlaceClick();
+    addCard(newCard)
+}
+// controlador del boton agregar lugar
 function onAddButtonClick(){
     togglePopupPlaceVisility();
 }
@@ -108,39 +118,7 @@ function togglePopupPlaceVisility(){
     popupPlace.classList.toggle("popup-place_opened");
 }
 
-//Botones para abrir y cerrar ventana popup-place
-const closePlaceButton = document.querySelector(".popup-place__icon-close");
-const addButton = document.querySelector(".profile__add-button");
-addButton.addEventListener("click", onAddButtonClick);
-closePlaceButton.addEventListener("click", onClosePopupPlaceClick);
 
-
-// funcion para agregar un nuvo lugar
-const addPlace = document.querySelector(".popup-place__button-save");
-addPlace.addEventListener("click",(evt) => {
-    evt.preventDefault();
-    const titleValue = document.querySelector(".popup-place__imput-text_title").value;
-    const picValue = document.querySelector(".popup-place__imput-text_image").value;
-    const newCard = {
-        name : titleValue,
-        link : picValue
-    }
-    initialCards.unshift(newCard);
-    cleanHtml();
-    init();
-    onClosePopupPlaceClick();
-});
-
-function cleanHtml(){
-    while (cardsContainer.firstChild){
-        cardsContainer.removeChild(cardsContainer.firstChild);
-    }
-}
-    
- 
-
-//controlador de evetons para inicializar las 6 cartas
-document.addEventListener("DOMContentLoaded", init);
 
 //funcion para dar like (encender el corazon negro)
 function toggleLikeElement() {
@@ -167,11 +145,16 @@ function closeZoomImage() {
     });
 }
 
-
 //Funcion para inicializar las 6 cartas y manter las funciones dentro de ellas
 function init(){
-    const card = initialCards.map(card =>{
-        const cardTemplate = document.querySelector("#cards-template");
+    initialCards.forEach(card => {
+        addCard(card);
+    })    
+}
+
+//Funcion para agregar las cartas
+function addCard(card){
+    const cardTemplate = document.querySelector("#cards-template");
         const cardElement = cardTemplate.content.cloneNode(true);
 
         const cardTitle = cardElement.querySelector(".cards__element-text");
@@ -181,7 +164,7 @@ function init(){
         cardpic.src = card.link;
 
         const cardContainer = document.querySelector(".cards");
-        cardContainer.append(cardElement);
+        cardContainer.prepend(cardElement);
 
         const like = document.querySelectorAll(".cards__element-like");
 
@@ -211,14 +194,28 @@ function init(){
                 cardElement.remove();
             })
         })
-
-    }) 
 }
 
-//cerrar imagen
-const closeImage = document.querySelectorAll(".image-zoom__icon-close");
-        closeImage.forEach(function(closeZoom){
-            closeZoom.addEventListener("click", closeZoomImage);
 
-        })
+
+editButton.addEventListener("click", onEditButtonClick);
+closeProfileButton.addEventListener("click", onClosePopupClick);
+// Conecta el manipulador (handler) al formulario:
+popup.addEventListener('submit', handleProfileFormSubmit); 
+
+
+addButton.addEventListener("click", onAddButtonClick);
+closePlaceButton.addEventListener("click", onClosePopupPlaceClick);
+popupPlace.addEventListener("submit", handledAddPlaceFormSubmit);
+
+
+//controlador de eventos para inicializar las 6 cartas
+document.addEventListener("DOMContentLoaded", init);
+
+
+
+
+
+
+
 

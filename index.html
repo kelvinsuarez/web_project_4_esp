@@ -49,8 +49,8 @@
                     <h2 class="popup__icon-close popup__icon-close:hover">+</h2>
                     <form class="popup__container">
                         <h2 class="popup__text" >Editar Perfil</h2>
-                        <input type="text" placeholder="Nombre" value="Jacques Cousteau" class="popup__imput-text popup__imput-text_name">
-                        <input type="text" placeholder="A cerca de mi" value="Explorador" class="popup__imput-text popup__imput-text_job">
+                        <input type="text" placeholder="Nombre" value="Jacques Cousteau" maxlength="18" class="popup__imput-text popup__imput-text_name">
+                        <input type="text" placeholder="A cerca de mi" value="Explorador" maxlength="18" class="popup__imput-text popup__imput-text_job">
                         <button class="popup__button-save popup__button-save:hover" >Guardar</button>
                     </form>
                 </div>
@@ -60,8 +60,8 @@
                     <h2 class="popup-place__icon-close popup-place__icon-close:hover">+</h2>
                     <form class="popup-place__container">
                         <h2 class="popup-place__text" >Nuevo Lugar</h2>
-                        <input type="text" placeholder="Titulo" value="" class="popup-place__imput-text popup-place__imput-text_title">
-                        <input type="text" placeholder="Imagen URL" value="" class="popup-place__imput-text popup-place__imput-text_image">
+                        <input type="text" placeholder="Titulo" minlength="2" value="" class="popup-place__imput-text popup-place__imput-text_title">
+                        <input type="url" placeholder="Imagen URL" value="" class="popup-place__imput-text popup-place__imput-text_image">
                         <button class="popup-place__button-save popup-place__button-save:hover">Guardar</button>
                     </form>
                 </div>
