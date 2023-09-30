@@ -31,21 +31,53 @@ const cardsContainer = document.querySelector(".cards");
 const cardTemplate = document.querySelector("#cards-template");
 const cardElement = cardTemplate.content.cloneNode(true);
 // variables para la ventana de formulario popup de perfil
-const popup = document.querySelector(".popup");
+const popup = document.querySelector("#popup_container");
 const closeProfileButton = document.querySelector(".popup__icon-close");
 const closeProfile = document.querySelector(".popup");
 const editButton = document.querySelector(".profile__edit-button-square");
 //variables para la ventana de formulario popup-place de agregar lugares
 const popupPlace = document.querySelector(".popup-place");
 const closePlaceButton = document.querySelector(".popup-place__icon-close");
+const closePlace = document.querySelector(".popup-place");
 const addButton = document.querySelector(".profile__add-button");
 
 //cerrar imagen
+const zoomImage = document.querySelector("#image-zoom_container");
 const closeImage = document.querySelectorAll(".image-zoom__icon-close");
 closeImage.forEach(function(closeZoom){
     closeZoom.addEventListener("click", closeZoomImage);
 })
 
+const closeImageOut = document.querySelectorAll(".image-zoom");
+
+function cerrarImagen() {
+    closeImageOut.forEach(function (zoomImage) {
+        zoomImage.addEventListener("click", function (event) {
+            if (event.target === zoomImage) {
+                cerrarZoomImage(zoomImage);
+            }
+        });
+
+        document.addEventListener('keydown', function (evt) {
+            if (evt.key == 'Escape') {
+                cerrarZoomImage(zoomImage);
+            }
+        });
+    });
+}
+
+function cerrarZoomImage(zoomImage) {
+    zoomImage.style.animation = 'fadeout 0.5s ease';
+    // Agregando animación al cierre de imágenes
+    zoomImage.addEventListener('animationend', function onAnimationEnd() {
+        zoomImage.style.animation = ''; // Restablecer la animación después de que termine
+        zoomImage.classList.remove("image-zoom_opened");
+        zoomImage.removeEventListener('animationend', onAnimationEnd);
+    });
+}
+
+
+cerrarImagen()
 
 
 //funciones para validar los formularios
@@ -136,7 +168,6 @@ function onEditButtonClick(){
 }
 // controlador del boton cerrar editar perfil
 function onClosePopupClick(){
-    const popup = document.querySelector("#popup_container");
     popup.style.animation = 'fadeout 0.5s ease';
     //agregando animacion para el cierre de popup
     popup.addEventListener('animationend', function onAnimationEnd() {
@@ -146,7 +177,6 @@ function onClosePopupClick(){
     });
 }
 function togglePopupVisility(){
-    let popup = document.querySelector("#popup_container");
     popup.classList.toggle("popup_opened");
 }
 
@@ -170,7 +200,6 @@ function onAddButtonClick(){
 }
 // controlador del boton cerrar agregar lugar
 function onClosePopupPlaceClick(){
-    let popupPlace = document.querySelector("#popup-place_container");
     popupPlace.style.animation = 'fadeout 0.5s ease';
     //agregando animacion para el cierre de popupPlace
     popupPlace.addEventListener('animationend', function onAnimationEnd() {
@@ -180,7 +209,6 @@ function onClosePopupPlaceClick(){
     });
 }
 function togglePopupPlaceVisility(){
-    let popupPlace = document.querySelector("#popup-place_container");
     popupPlace.classList.toggle("popup-place_opened");
 }
 
@@ -195,13 +223,11 @@ function toggleLikeElement() {
 
 //funcion para abrir las imagenes
 function openZoomImage() {
-    let zoomImage = document.querySelector("#image-zoom_container");
     zoomImage.classList.add("image-zoom_opened");
 
 }
 //funcion para cerrar las imagenes
 function closeZoomImage() {
-    let zoomImage = document.querySelector("#image-zoom_container");
     zoomImage.style.animation = 'fadeout 0.5s ease';
     //agregando animacion al cierre de imagenes
     zoomImage.addEventListener('animationend', function onAnimationEnd() {
@@ -266,14 +292,56 @@ function addCard(card){
 
 editButton.addEventListener("click", onEditButtonClick);
 closeProfileButton.addEventListener("click", onClosePopupClick);
+closeProfile.addEventListener("click", function(evt){
+    if (evt.target === closeProfile){
+        popup.style.animation = 'fadeout 0.5s ease';
+        //agregando animacion para el cierre de popup
+        popup.addEventListener('animationend', function onAnimationEnd() {
+            popup.style.animation = '';
+            togglePopupVisility();
+            popup.removeEventListener('animationend', onAnimationEnd);
+        });
+    }
+});
+document.addEventListener('keydown', (evt) => {
+    if(evt.key == 'Escape'){
+        if(popup.classList.contains("popup_opened")){
+            popup.style.animation = 'fadeout 0.5s ease';
+            //agregando animacion para el cierre de popup
+            popup.addEventListener('animationend', function onAnimationEnd() {
+                popup.style.animation = '';
+                togglePopupVisility();
+                popup.removeEventListener('animationend', onAnimationEnd);
+            });
+        }else if(popupPlace.classList.contains("popup-place_opened")){
+            popupPlace.style.animation = 'fadeout 0.5s ease';
+            //agregando animacion para el cierre de popupPlace
+            popupPlace.addEventListener('animationend', function onAnimationEnd() {
+                popupPlace.style.animation = '';
+                togglePopupPlaceVisility();
+                popupPlace.removeEventListener('animationend', onAnimationEnd);
+            });
+        }
+    }
+})
+
 // Conecta el manipulador (handler) al formulario:
 popup.addEventListener('submit', handleProfileFormSubmit);
 
 
-
-
 addButton.addEventListener("click", onAddButtonClick);
 closePlaceButton.addEventListener("click", onClosePopupPlaceClick);
+closePlace.addEventListener("click", function(evt){
+    if (evt.target === closePlace){
+        popupPlace.style.animation = 'fadeout 0.5s ease';
+        //agregando animacion para el cierre de popupPlace
+        popupPlace.addEventListener('animationend', function onAnimationEnd() {
+            popupPlace.style.animation = '';
+            togglePopupPlaceVisility();
+            popupPlace.removeEventListener('animationend', onAnimationEnd);
+        });
+    }
+});
 popupPlace.addEventListener("submit", handledAddPlaceFormSubmit);
 
 
