@@ -50,16 +50,10 @@ closeImage.forEach(function(closeZoom){
 
 const closeImageOut = document.querySelectorAll(".image-zoom");
 
-function cerrarImagen() {
+function cerrarImagenClickOut() {
     closeImageOut.forEach(function (zoomImage) {
         zoomImage.addEventListener("click", function (event) {
             if (event.target === zoomImage) {
-                cerrarZoomImage(zoomImage);
-            }
-        });
-
-        document.addEventListener('keydown', function (evt) {
-            if (evt.key == 'Escape') {
                 cerrarZoomImage(zoomImage);
             }
         });
@@ -77,75 +71,8 @@ function cerrarZoomImage(zoomImage) {
 }
 
 
-cerrarImagen()
+cerrarImagenClickOut()
 
-
-//funciones para validar los formularios
-const showInputError = (formElement, inputElement, errorMessage) => {
-    const formProfileError = formElement.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.add("popup__input-text_type_error");
-    formProfileError.textContent = errorMessage;
-    formProfileError.classList.add("popup__input-show-error");
-  };
-  
-const hideInputError = (formElement, inputElement) => {
-    const formProfileError = formElement.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.remove("popup__input-text_type_error");
-    formProfileError.classList.remove("popup__input-show-error");
-    formProfileError.textContent = "";
-  };
-
-const isValid = (formElement, inputElement) => {
-    if (!inputElement.validity.valid) {
-      showInputError(formElement, inputElement, inputElement.validationMessage);
-    } else {
-      hideInputError(formElement , inputElement);
-    }
-};
-
-const hasInvalidInput = (inputList) => {
-    return inputList.some((inputElement) => {
-        return !inputElement.validity.valid;
-    })
-}
-
-const toggleButtonState = (inputList, buttonElement) => {
-    if (hasInvalidInput(inputList)) {
-        buttonElement.classList.add("popup__button-save-off");
-        buttonElement.setAttribute("disabled", true);
-    } else {
-    buttonElement.classList.remove("popup__button-save-off");
-    buttonElement.removeAttribute("disabled");
-    }
-};
-
-const setEventListeners = (formElement) => {
-    const inputList = Array.from(formElement.querySelectorAll(".popup__imput-text"));
-    const buttonElement = formElement.querySelector(".popup-save");
-    toggleButtonState(inputList, buttonElement);
-    inputList.forEach((inputElement) => {
-        inputElement.addEventListener("input", function () {
-            isValid(formElement, inputElement);
-            toggleButtonState(inputList, buttonElement);
-        });
-    });
-};
-
-
-const enableValidation = () => {
-    const formList = Array.from(document.querySelectorAll(".popup__form"));
-    formList.forEach((formElement) => {
-        formElement.addEventListener("submit", (evt) => {
-            evt.preventDefault();
-        });
-        setEventListeners(formElement)
-    });
-}
-
-enableValidation();
-  
-  
-//*******************************************************************************
 
 
 //funcion para editar perfil
@@ -289,13 +216,12 @@ function addCard(card){
 }
 
 
-
+//manipuladores de eventos para abrir y cerrar editar perfil
 editButton.addEventListener("click", onEditButtonClick);
 closeProfileButton.addEventListener("click", onClosePopupClick);
 closeProfile.addEventListener("click", function(evt){
     if (evt.target === closeProfile){
         popup.style.animation = 'fadeout 0.5s ease';
-        //agregando animacion para el cierre de popup
         popup.addEventListener('animationend', function onAnimationEnd() {
             popup.style.animation = '';
             togglePopupVisility();
@@ -303,38 +229,12 @@ closeProfile.addEventListener("click", function(evt){
         });
     }
 });
-document.addEventListener('keydown', (evt) => {
-    if(evt.key == 'Escape'){
-        if(popup.classList.contains("popup_opened")){
-            popup.style.animation = 'fadeout 0.5s ease';
-            //agregando animacion para el cierre de popup
-            popup.addEventListener('animationend', function onAnimationEnd() {
-                popup.style.animation = '';
-                togglePopupVisility();
-                popup.removeEventListener('animationend', onAnimationEnd);
-            });
-        }else if(popupPlace.classList.contains("popup-place_opened")){
-            popupPlace.style.animation = 'fadeout 0.5s ease';
-            //agregando animacion para el cierre de popupPlace
-            popupPlace.addEventListener('animationend', function onAnimationEnd() {
-                popupPlace.style.animation = '';
-                togglePopupPlaceVisility();
-                popupPlace.removeEventListener('animationend', onAnimationEnd);
-            });
-        }
-    }
-})
-
-// Conecta el manipulador (handler) al formulario:
-popup.addEventListener('submit', handleProfileFormSubmit);
-
-
+//manipuladores de eventos para abrir y cerrar addPlace
 addButton.addEventListener("click", onAddButtonClick);
 closePlaceButton.addEventListener("click", onClosePopupPlaceClick);
 closePlace.addEventListener("click", function(evt){
     if (evt.target === closePlace){
         popupPlace.style.animation = 'fadeout 0.5s ease';
-        //agregando animacion para el cierre de popupPlace
         popupPlace.addEventListener('animationend', function onAnimationEnd() {
             popupPlace.style.animation = '';
             togglePopupPlaceVisility();
@@ -342,6 +242,36 @@ closePlace.addEventListener("click", function(evt){
         });
     }
 });
+
+//manipuladores de eventos para cerrar con bonton Esc
+document.addEventListener('keydown', (evt) => {
+    const buscdorDeClases = Array.from(closeImageOut).some(elemento =>{
+        return elemento.classList.contains("image-zoom_opened");
+    })
+    if(evt.key == 'Escape'){
+        if(popup.classList.contains("popup_opened")){
+            popup.style.animation = 'fadeout 0.5s ease';
+            popup.addEventListener('animationend', function onAnimationEnd() {
+                popup.style.animation = '';
+                togglePopupVisility();
+                popup.removeEventListener('animationend', onAnimationEnd);
+            });
+        }else if(popupPlace.classList.contains("popup-place_opened")){
+            popupPlace.style.animation = 'fadeout 0.5s ease';
+            popupPlace.addEventListener('animationend', function onAnimationEnd() {
+                popupPlace.style.animation = '';
+                togglePopupPlaceVisility();
+                popupPlace.removeEventListener('animationend', onAnimationEnd);
+            });
+        }else if (buscdorDeClases){
+            cerrarZoomImage(zoomImage)
+        }
+    }
+})
+
+// Conecta el manipulador de eventos enviar
+popup.addEventListener('submit', handleProfileFormSubmit);
+
 popupPlace.addEventListener("submit", handledAddPlaceFormSubmit);
 
 
