@@ -18,7 +18,7 @@
 
 .popup__button-save.popup__button-save-off{
     background-color: white;
-    color:gray
+    color:gray;
 }
 
 @media screen and (max-width: 768px) {

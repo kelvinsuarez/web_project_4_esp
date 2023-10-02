@@ -21,7 +21,7 @@
     width: 83%;
     font-size: 12px;
     opacity: 0.75;
-    top: -20px
+    top: -20px;
 }
 
 @media screen and (max-width: 768px) {
@@ -33,13 +33,13 @@
 @media screen and (max-width: 768px) {
     .popup__input-error{
         font-size: 8px;
-        margin-top: -18px
+        margin-top: -18px;
     }
 }
 
 @media screen and (max-width: 768px) {
     .popup__input-show-error{
         font-size: 8px;
-        top: 0
+        top: 0;
     }
 }
