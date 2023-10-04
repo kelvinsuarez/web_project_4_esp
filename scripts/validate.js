@@ -1,15 +1,15 @@
 //funciones para validar los formularios
 const showInputError = (formElement, inputElement, errorMessage) => {
     const formProfileError = formElement.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.add("popup__input-text_type_error");
+    inputElement.classList.add("form__input-text_type_error");
     formProfileError.textContent = errorMessage;
-    formProfileError.classList.add("popup__input-show-error");
+    formProfileError.classList.add("form__input-show-error");
   };
   
 const hideInputError = (formElement, inputElement) => {
     const formProfileError = formElement.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.remove("popup__input-text_type_error");
-    formProfileError.classList.remove("popup__input-show-error");
+    inputElement.classList.remove("form__input-text_type_error");
+    formProfileError.classList.remove("form__input-show-error");
     formProfileError.textContent = "";
   };
 
@@ -38,7 +38,7 @@ const toggleButtonState = (inputList, buttonElement) => {
 };
 
 const setEventListeners = (formElement) => {
-    const inputList = Array.from(formElement.querySelectorAll(".popup__imput-text"));
+    const inputList = Array.from(formElement.querySelectorAll(".form__imput-text"));
     const buttonElement = formElement.querySelector(".popup-save");
     toggleButtonState(inputList, buttonElement);
     inputList.forEach((inputElement) => {
@@ -51,7 +51,7 @@ const setEventListeners = (formElement) => {
 
 
 const enableValidation = () => {
-    const formList = Array.from(document.querySelectorAll(".popup__form"));
+    const formList = Array.from(document.querySelectorAll(".form__popup"));
     formList.forEach((formElement) => {
         formElement.addEventListener("submit", (evt) => {
             evt.preventDefault();

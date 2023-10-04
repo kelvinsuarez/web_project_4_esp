@@ -1,13 +1,13 @@
 .popup-place__button-save{
     background-color: black;
-    color: white;
+    color: rgba(255, 255, 255, 0.747);
     width: 83%;
     height: 15%;
     font-weight: 400;
     font-size: 18px;
     line-height: 22px;
     text-align: center;
-    margin-bottom: 3%;
+    margin-bottom: 0;
     border-radius: 3px;
   }
   
@@ -15,6 +15,11 @@
     background: rgba(0, 0, 0, 0.8);
     cursor: pointer;
   }
+
+  .popup-place__button-save.popup__button-save-off{
+    background-color: white;
+    color:gray;
+}
   
   @media screen and (max-width: 768px) {
     .popup-place__button-save{

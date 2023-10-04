@@ -10,7 +10,7 @@
    outline: none;
   }
   
-  .popup__input-text_type_error{
+  .form__input-text_type_error{
     border-bottom: 1px solid #f50606;
 }
 
