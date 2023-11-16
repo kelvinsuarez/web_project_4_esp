@@ -23,15 +23,15 @@ export default class FormValidator {
   isValid(inputElement) {
     if (!inputElement.validity.valid) {
       this.showInputError(inputElement, inputElement.validationMessage);
-      return false;
     } else {
       this.hideInputError(inputElement);
-      return true;
     }
   }
   
   hasInvalidInput() {
-    return this.inputList.some((inputElement) => !this.isValid(inputElement));
+    return this.inputList.some((inputElement) => {
+      return !inputElement.validity.valid
+    });
   }
   
   toggleButtonState() {
@@ -57,14 +57,13 @@ export default class FormValidator {
   enableValidation() {
     this.formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
+      setTimeout(() => {
+        this.formElement.reset();
+        this.hideInputError(inputElement)
+      }, 100);
     });
     this.setEventListeners();
   }
 
-  addClickHandler() {
-    document.addEventListener("click", () => {
-      console.log("Se hizo clic en el formulario", this.formElement.id);
-    });
-  }
 }
   
