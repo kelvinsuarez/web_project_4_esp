@@ -1,5 +1,5 @@
 import Card from "./Card.js"
-import FormValidator from "./Validate.js"
+import FormValidator from "./FormValidator.js"
 import agregarEventListeners from "./utils.js";
 import { cerrarImagenClickOut } from "./utils.js";
 import { onClosePopupPlaceClick } from "./utils.js";

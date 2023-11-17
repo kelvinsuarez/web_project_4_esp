@@ -59,7 +59,7 @@ export default class FormValidator {
       evt.preventDefault();
       setTimeout(() => {
         this.formElement.reset();
-        this.hideInputError(inputElement)
+        this.toggleButtonState()
       }, 100);
     });
     this.setEventListeners();
