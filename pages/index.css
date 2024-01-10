@@ -3,7 +3,6 @@
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
 @import url(../blocks/header/__line/header__line.css);
-@import url(../blocks/main/main.css);
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__avatar/__elipce/profile__elipce.css);
@@ -44,3 +43,4 @@
 @import url(../blocks/image-zoom/__group/image-zoom__group.css);
 @import url(../blocks/image-zoom/__group/__container/image-zoom__container.css);
 @import url(../blocks/image-zoom/__group/__icon-close/image-zoom__icon-close.css);
+@import url(../blocks/image-zoom/__group/__text/image-zoom__text.css);

@@ -1,7 +1,11 @@
+import PopupWithImage from "./PopupWithImage.js"
+const popupWithImage = new PopupWithImage("#image-zoom_container");
+
 export default class Card {
-  constructor(data, cardElement) {
+  constructor(data, cardElement, popup) {
     this._cardData = data;
     this._cardElement = cardElement ;
+    this._popup = popup;
   }
 
   _createCardElement() {
@@ -21,13 +25,7 @@ export default class Card {
     });
 
     const viewImage = createCard.querySelector(".cards__element-pic");
-    viewImage.addEventListener("click", (evt) =>{
-      const clickedPic = evt.currentTarget; 
-      const srcValue = clickedPic.getAttribute("src");
-      const picZoom =document.querySelector(".image-zoom__container");
-      picZoom.src= srcValue;
-      this.openZoomImage();
-    });
+    viewImage.addEventListener("click", () => this._handleImageClick());
 
     const trash = createCard.querySelector(".cards__element-trash");
     trash.addEventListener("click", (evt) =>{
@@ -35,6 +33,18 @@ export default class Card {
       cardElement.remove();
     })
   }
+
+  _handleImageClick() {
+    const srcValue = this._cardData.link;
+    popupWithImage.open(srcValue, this._cardData.name);
+    /*const srcValue = this._cardData.link;
+    const picZoom = this._popup.querySelector(".image-zoom__container");
+    picZoom.src= srcValue;
+    this._popup.classList.add("image-zoom_opened");
+    const legend = this._popup.querySelector(".image-zoom__text");
+    legend.textContent = `Imagen de ${this._cardData.name}`*/
+  }
+
 
   generateCard(){
     const createCard = this._createCardElement()
@@ -46,10 +56,5 @@ export default class Card {
     elementImage.alt = this._cardData.name
     
     return createCard
-  }
-
-  openZoomImage() {
-    const zoomImage = document.querySelector("#image-zoom_container");
-    zoomImage.classList.add("image-zoom_opened");
   }
 }

@@ -1,5 +1,6 @@
-import { handledAddPlaceFormSubmit } from "./index.js";
-import init from "./index.js";
+import { handledAddPlaceFormSubmit } from "../pages/index.js";
+import init from "../pages/index.js";
+import Popup from "../components/Popup.js";
 
 const popup = document.querySelector("#popup_container"); 
 const popupPlace = document.querySelector(".popup-place");
@@ -42,22 +43,16 @@ function handleProfileFormSubmit(evt) {
 }
 
 
+const popupInstance = new Popup('#popup_container');
+popupInstance.setEventListeners();
+
 // controlador del boton editar perfil
 function onEditButtonClick(){
-  togglePopupVisility();
+  popupInstance.open();
 }
 // controlador del boton cerrar editar perfil
 function onClosePopupClick(){
-  popup.style.animation = 'fadeout 0.5s ease';
-  //agregando animacion para el cierre de popup
-  popup.addEventListener('animationend', function onAnimationEnd() {
-    popup.style.animation = '';
-    togglePopupVisility();
-    popup.removeEventListener('animationend', onAnimationEnd);
-  });
-}
-function togglePopupVisility(){
-  popup.classList.toggle("popup_opened");
+  popupInstance.close();
 }
 
 
@@ -93,7 +88,7 @@ export default function agregarEventListeners() {
 
   //manipuladores de eventos para abrir y cerrar editar perfil
   editButton.addEventListener("click", onEditButtonClick);
-  closeProfileButton.addEventListener("click", onClosePopupClick);
+  closeProfileButton.addEventListener("click", popupInstance.close);
   closeProfile.addEventListener("click", function(evt){
     if (evt.target === closeProfile){
       popup.style.animation = 'fadeout 0.5s ease';
