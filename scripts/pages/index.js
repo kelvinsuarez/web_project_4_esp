@@ -1,8 +1,8 @@
-import Card from "./Card.js"
-import FormValidator from "./FormValidator.js"
-import agregarEventListeners from "./utils.js";
-import { cerrarImagenClickOut } from "./utils.js";
-import { onClosePopupPlaceClick } from "./utils.js";
+import Card from "../components/Card.js"
+import FormValidator from "../components/FormValidator.js"
+import agregarEventListeners from "../utils/utils.js";
+import { cerrarImagenClickOut } from "../utils/utils.js";
+import { onClosePopupPlaceClick } from "../utils/utils.js";
 
 const initialCards = [
   {
@@ -39,7 +39,7 @@ closeImage.forEach(function(closeZoom){
 })
 
 
-cerrarImagenClickOut()
+cerrarImagenClickOut();
 
 
 //funcion para cerrar las imagenes
@@ -81,7 +81,7 @@ const validatePlace = new FormValidator(document.querySelector("#popup-place_con
 
 
 
-agregarEventListeners()
+agregarEventListeners();
 
 
 

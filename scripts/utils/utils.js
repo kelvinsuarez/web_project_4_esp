@@ -1,5 +1,5 @@
-import { handledAddPlaceFormSubmit } from "./index.js";
-import init from "./index.js";
+import { handledAddPlaceFormSubmit } from "../pages/index.js";
+import init from "../pages/index.js";
 
 const popup = document.querySelector("#popup_container"); 
 const popupPlace = document.querySelector(".popup-place");
