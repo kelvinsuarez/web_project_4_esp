@@ -50,6 +50,6 @@ export default class Card {
 
   openZoomImage() {
     const zoomImage = document.querySelector("#image-zoom_container");
-    zoomImage.classList.add("image-zoom_opened");
+    zoomImage.classList.remove("image-zoom_opened");
   }
 }

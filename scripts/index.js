@@ -44,13 +44,7 @@ cerrarImagenClickOut()
 
 //funcion para cerrar las imagenes
 function closeZoomImage() {
-  zoomImage.style.animation = 'fadeout 0.5s ease';
-  //agregando animacion al cierre de imagenes
-  zoomImage.addEventListener('animationend', function onAnimationEnd() {
-    zoomImage.style.animation = ''; // Restablecer la animación después de que termine
-    zoomImage.classList.remove("image-zoom_opened");
-    zoomImage.removeEventListener('animationend', onAnimationEnd);
-  });
+  zoomImage.classList.add("image-zoom_opened");
 }
 
  // Función para agregar una nueva tarjeta

@@ -9,20 +9,11 @@ const zoomImage = document.querySelector("#image-zoom_container");
 
 // controlador del boton agregar lugar
 function onAddButtonClick(){
-  togglePopupPlaceVisility();
+  popupPlace.classList.remove("popup-place_opened");
 }
 // controlador del boton cerrar agregar lugar
 export function onClosePopupPlaceClick(){
-  popupPlace.style.animation = 'fadeout 0.5s ease';
-  //agregando animacion para el cierre de popupPlace
-  popupPlace.addEventListener('animationend', function onAnimationEnd() {
-    popupPlace.style.animation = '';
-    togglePopupPlaceVisility();
-    popupPlace.removeEventListener('animationend', onAnimationEnd);
-  });
-}
-function togglePopupPlaceVisility(){
-  popupPlace.classList.toggle("popup-place_opened");
+  popupPlace.classList.add("popup-place_opened");
 }
 
 
@@ -44,20 +35,11 @@ function handleProfileFormSubmit(evt) {
 
 // controlador del boton editar perfil
 function onEditButtonClick(){
-  togglePopupVisility();
+  popup.classList.remove("popup_opened");
 }
 // controlador del boton cerrar editar perfil
 function onClosePopupClick(){
-  popup.style.animation = 'fadeout 0.5s ease';
-  //agregando animacion para el cierre de popup
-  popup.addEventListener('animationend', function onAnimationEnd() {
-    popup.style.animation = '';
-    togglePopupVisility();
-    popup.removeEventListener('animationend', onAnimationEnd);
-  });
-}
-function togglePopupVisility(){
-  popup.classList.toggle("popup_opened");
+  popup.classList.add("popup_opened");
 }
 
 
@@ -72,13 +54,7 @@ export function cerrarImagenClickOut() {
 }
 
 function cerrarZoomImage(zoomImage) {
-  zoomImage.style.animation = 'fadeout 0.5s ease';
-  // Agregando animación al cierre de imágenes
-  zoomImage.addEventListener('animationend', function onAnimationEnd() {
-    zoomImage.style.animation = ''; // Restablecer la animación después de que termine
-    zoomImage.classList.remove("image-zoom_opened");
-    zoomImage.removeEventListener('animationend', onAnimationEnd);
-  });
+  zoomImage.classList.add("image-zoom_opened")
 }
 
 
@@ -96,12 +72,7 @@ export default function agregarEventListeners() {
   closeProfileButton.addEventListener("click", onClosePopupClick);
   closeProfile.addEventListener("click", function(evt){
     if (evt.target === closeProfile){
-      popup.style.animation = 'fadeout 0.5s ease';
-      popup.addEventListener('animationend', function onAnimationEnd() {
-        popup.style.animation = '';
-        togglePopupVisility();
-        popup.removeEventListener('animationend', onAnimationEnd);
-      });
+      onClosePopupClick();
     }
   });
   //manipuladores de eventos para abrir y cerrar addPlace
@@ -109,37 +80,24 @@ export default function agregarEventListeners() {
   closePlaceButton.addEventListener("click", onClosePopupPlaceClick);
   popupPlace.addEventListener("click", function(evt){
     if (evt.target === popupPlace){
-      popupPlace.style.animation = 'fadeout 0.5s ease';
-      popupPlace.addEventListener('animationend', function onAnimationEnd() {
-        popupPlace.style.animation = '';
-        togglePopupPlaceVisility();
-        popupPlace.removeEventListener('animationend', onAnimationEnd);
-      });
+      onClosePopupPlaceClick();
     }
   });
 
   //manipuladores de eventos para cerrar con bonton Esc
   document.addEventListener('keydown', (evt) => {
     const buscdorDeClases = Array.from(closeImageOut).some(elemento =>{
-      return elemento.classList.contains("image-zoom_opened");
+      return elemento.classList.contains("image-zoom");
     })
     if(evt.key == 'Escape'){
-      if(popup.classList.contains("popup_opened")){
-        popup.style.animation = 'fadeout 0.5s ease';
-        popup.addEventListener('animationend', function onAnimationEnd() {
-          popup.style.animation = '';
-          togglePopupVisility();
-          popup.removeEventListener('animationend', onAnimationEnd);
-        });
-      }else if(popupPlace.classList.contains("popup-place_opened")){
-        popupPlace.style.animation = 'fadeout 0.5s ease';
-        popupPlace.addEventListener('animationend', function onAnimationEnd() {
-          popupPlace.style.animation = '';
-          togglePopupPlaceVisility();
-          popupPlace.removeEventListener('animationend', onAnimationEnd);
-        });
-      }else if (buscdorDeClases){
-        cerrarZoomImage(zoomImage)
+      if(popup.classList.contains("popup")){
+        popup.classList.add("popup_opened")
+      }
+      if(popupPlace.classList.contains("popup-place")){
+        popupPlace.classList.add("popup-place_opened")
+      }
+      if (buscdorDeClases){
+        zoomImage.classList.add("image-zoom_opened")
       }
     }
   })

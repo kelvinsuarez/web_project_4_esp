@@ -1,76 +1,19 @@
-@-webkit-keyframes fadein {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes fadein {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@-webkit-keyframes fadeout {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
-}
-
-@keyframes fadeout {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
-}
-
 
 .popup{
+    display: flex;
     min-width: 100%;
     min-height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     position: fixed;
-    display: none;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     top: 0px;
     z-index: 1;
-    -webkit-animation: fadein 0.5s ease;
-            animation: fadein 0.5s ease;
-    -webkit-transition: opacity 0.5s ease;
-    -o-transition: opacity 0.5s ease;
-    transition: opacity 0.5s ease;
+    transition: all .7s ease;
 }
 
 .popup_opened{
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-animation: fadein 0.5s ease;
-            animation: fadein 0.5s ease;
-}
-
-.popup_opened:not(.popup_opened) {
+    visibility: hidden;
     opacity: 0;
-    pointer-events: none;
 }
