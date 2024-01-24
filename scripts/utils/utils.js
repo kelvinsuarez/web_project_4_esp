@@ -1,10 +1,15 @@
 import { handledAddPlaceFormSubmit } from "../pages/index.js";
 import init from "../pages/index.js";
-
-const popup = document.querySelector("#popup_container"); 
-const popupPlace = document.querySelector(".popup-place");
-const closeImageOut = document.querySelectorAll(".image-zoom");
-const zoomImage = document.querySelector("#image-zoom_container");
+import {popup,
+  popupPlace,
+  zoomImage,
+  closeImageOut,
+  editProfileButton,
+  closeProfileButton,
+  closeProfile,
+  addCardButton,
+  closePlaceButton
+} from "../utils/constants.js"
 
 
 // controlador del boton agregar lugar
@@ -60,15 +65,9 @@ function cerrarZoomImage(zoomImage) {
 
 
 export default function agregarEventListeners() {
-  const editButton = document.querySelector(".profile__edit-button-square");
-  const closeProfileButton = document.querySelector(".popup__icon-close");
-  const closeProfile = document.querySelector(".popup");
-  const addButton = document.querySelector(".profile__add-button");
-  const closePlaceButton = document.querySelector(".popup-place__icon-close");
-  const closeImageOut = document.querySelectorAll(".image-zoom");
 
   //manipuladores de eventos para abrir y cerrar editar perfil
-  editButton.addEventListener("click", onEditButtonClick);
+  editProfileButton.addEventListener("click", onEditButtonClick);
   closeProfileButton.addEventListener("click", onClosePopupClick);
   closeProfile.addEventListener("click", function(evt){
     if (evt.target === closeProfile){
@@ -76,7 +75,7 @@ export default function agregarEventListeners() {
     }
   });
   //manipuladores de eventos para abrir y cerrar addPlace
-  addButton.addEventListener("click", onAddButtonClick);
+  addCardButton.addEventListener("click", onAddButtonClick);
   closePlaceButton.addEventListener("click", onClosePopupPlaceClick);
   popupPlace.addEventListener("click", function(evt){
     if (evt.target === popupPlace){

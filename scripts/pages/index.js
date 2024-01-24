@@ -4,36 +4,14 @@ import agregarEventListeners from "../utils/utils.js";
 import { cerrarImagenClickOut } from "../utils/utils.js";
 import { onClosePopupPlaceClick } from "../utils/utils.js";
 import Section from "../components/Section.js";
-
-const initialCards = [
-  {
-    name: "Valle de Yosemite",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg",
-  },
-  {
-    name: "Lago Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg",
-  },
-  {
-    name: "Montañas Calvas",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg",
-  },
-  {
-    name: "Parque Nacional de la Vanoise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
-  }
-]; 
+import { 
+  initialCards,
+  cardListSelector,
+  zoomImage,
+  closeImage,
+ } from "../utils/constants.js";
 
 
-const cardListSelector = ".cards";
 
 const cardList = new Section ({ 
   items: initialCards,
@@ -49,8 +27,6 @@ const cardList = new Section ({
 );
 
 //cerrar imagen
-const zoomImage = document.querySelector("#image-zoom_container");
-const closeImage = document.querySelectorAll(".image-zoom__icon-close");
 closeImage.forEach(function(closeZoom){
   closeZoom.addEventListener("click", closeZoomImage);
 })
