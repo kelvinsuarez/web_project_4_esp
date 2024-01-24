@@ -3,6 +3,7 @@ import FormValidator from "../components/FormValidator.js"
 import agregarEventListeners from "../utils/utils.js";
 import { cerrarImagenClickOut } from "../utils/utils.js";
 import { onClosePopupPlaceClick } from "../utils/utils.js";
+import Section from "../components/Section.js";
 
 const initialCards = [
   {
@@ -30,6 +31,22 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
   }
 ]; 
+
+
+const cardListSelector = ".cards";
+
+const cardList = new Section ({ 
+  items: initialCards,
+    renderer: () =>{
+      this._initialArray.forEach(data =>{
+        const card = new Card(data, "#cards-template", popupWithImage);
+        const cardElement = card.generateCard();
+        cardList.setItem(cardElement)
+      });
+    }
+  },
+  cardListSelector
+);
 
 //cerrar imagen
 const zoomImage = document.querySelector("#image-zoom_container");
