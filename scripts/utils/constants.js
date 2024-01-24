@@ -44,3 +44,12 @@ export const closePlaceButton = document.querySelector(".popup-place__icon-close
  
  // selector de contenedor de cartas
  export const cardListSelector = ".cards";
+
+ //constante para validador de formulario
+ export const settingElement = {
+    inputSelector: ".form__imput-text",
+    submitButtonSelector: ".popup-save",
+    buttonSaveOff: "popup__button-save-off",
+    inputErrorClass: "form__input-text_type_error",
+    errorClass: "form__input-show-error",
+};
