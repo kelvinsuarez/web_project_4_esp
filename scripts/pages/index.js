@@ -12,7 +12,7 @@ import {
  } from "../utils/constants.js";
 
 
-
+//instancia de clase Section para renderizar las cartas
 const cardList = new Section ({ 
   items: initialCards,
     renderer: (cardItem) =>{
@@ -25,24 +25,17 @@ const cardList = new Section ({
 );
 
 
-//  // Función para agregar una nueva tarjeta
-//   function addCard(cardData) {
-//   const newCard = new Card(cardData, "#cards-template");
-//   const cardContainer = document.querySelector(".cards");
-//   cardContainer.prepend(newCard.generateCard());
-// }
-
 //funcion para agregar lugar
 export function handledAddPlaceFormSubmit (evt){
   evt.preventDefault();
   const titleValue = document.querySelector(".popup-place__imput-text_title").value;
   const picValue = document.querySelector(".popup-place__imput-text_image").value;
-  const newCard = {
+  const newCard = new Card( {
     name : titleValue,
     link : picValue
-  }
-  initialCards.unshift(newCard);
-  cardList.renderer();
+  },"#cards-template")
+  
+  cardList.setItem(newCard.generateCard());
   onClosePopupPlaceClick();
 }
 
