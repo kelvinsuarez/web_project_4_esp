@@ -10,19 +10,23 @@ import {
   zoomImage,
   closeImage,
  } from "../utils/constants.js";
+ import PopupWithImage from "../components/PopupWithImage.js";
 
 
 //instancia de clase Section para renderizar las cartas
 const cardList = new Section ({ 
   items: initialCards,
     renderer: (cardItem) =>{
-        const card = new Card(cardItem, "#cards-template");
+        const card = new Card(cardItem, "#cards-template",popupWithImage);
         const cardElement = card.generateCard();
         cardList.setItem(cardElement);
     },
   },
   cardListSelector
 );
+
+//instancia de PopupWhithImage
+const popupWithImage = new PopupWithImage("#image-zoom_container");
 
 
 //funcion para agregar lugar
@@ -33,7 +37,7 @@ export function handledAddPlaceFormSubmit (evt){
   const newCard = new Card( {
     name : titleValue,
     link : picValue
-  },"#cards-template")
+  },"#cards-template",popupWithImage)
   
   cardList.setItem(newCard.generateCard());
   onClosePopupPlaceClick();
@@ -59,7 +63,7 @@ cerrarImagenClickOut();
 
 //funcion para cerrar las imagenes
 function closeZoomImage() {
-  zoomImage.classList.add("image-zoom_opened");
+  popupWithImage.close()
 }
 
 

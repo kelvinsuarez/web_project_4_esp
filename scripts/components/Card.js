@@ -1,8 +1,11 @@
+import PopupWithImage from "./PopupWithImage.js";
+
 export default class Card {
   constructor(data, cardElement, popup) {
     this._cardData = data;
     this._cardElement = cardElement;
     this._popup = popup;
+    this._popupWhitImage = new PopupWithImage(".image-zoom");
   }
 
   _createCardElement() {
@@ -22,19 +25,17 @@ export default class Card {
     });
 
     const viewImage = createCard.querySelector(".cards__element-pic");
-    viewImage.addEventListener("click", (evt) =>{
-      const clickedPic = evt.currentTarget; 
-      const srcValue = clickedPic.getAttribute("src");
-      const picZoom =document.querySelector(".image-zoom__container");
-      picZoom.src= srcValue;
-      this.openZoomImage();
-    });
+    viewImage.addEventListener("click", () => this._handleImageClick());
 
     const trash = createCard.querySelector(".cards__element-trash");
     trash.addEventListener("click", (evt) =>{
       let cardElement = evt.currentTarget.closest(".cards__element");
       cardElement.remove();
     })
+  }
+
+  _handleImageClick() {
+    this._popup.open(this._cardData.link, this._cardData.name);
   }
 
   generateCard(){
@@ -48,8 +49,4 @@ export default class Card {
     return createCard
   }
 
-  openZoomImage() {
-    const zoomImage = document.querySelector("#image-zoom_container");
-    zoomImage.classList.remove("image-zoom_opened");
-  }
 }

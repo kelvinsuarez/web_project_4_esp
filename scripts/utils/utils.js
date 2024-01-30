@@ -88,23 +88,23 @@ export default function agregarEventListeners() {
     }
   });
 
-  //manipuladores de eventos para cerrar con bonton Esc
-  document.addEventListener('keydown', (evt) => {
-    const buscdorDeClases = Array.from(closeImageOut).some(elemento =>{
-      return elemento.classList.contains("image-zoom");
-    })
-    if(evt.key == 'Escape'){
-      if(popup.classList.contains("popup")){
-        popup.classList.add("popup_opened")
-      }
-      if(popupPlace.classList.contains("popup-place")){
-        popupPlace.classList.add("popup-place_opened")
-      }
-      if (buscdorDeClases){
-        zoomImage.classList.add("image-zoom_opened")
-      }
-    }
-  })
+  // //manipuladores de eventos para cerrar con bonton Esc
+  // document.addEventListener('keydown', (evt) => {
+  //   const buscdorDeClases = Array.from(closeImageOut).some(elemento =>{
+  //     return elemento.classList.contains("image-zoom");
+  //   })
+  //   if(evt.key == 'Escape'){
+  //     if(popup.classList.contains("popup")){
+  //       popup.classList.add("popup_opened")
+  //     }
+  //     if(popupPlace.classList.contains("popup-place")){
+  //       popupPlace.classList.add("popup-place_opened")
+  //     }
+  //     if (buscdorDeClases){
+  //       zoomImage.classList.add("image-zoom_opened")
+  //     }
+  //   }
+  // })
 
   // Conecta el manipulador de eventos enviar
   popup.addEventListener('submit', handleProfileFormSubmit);
