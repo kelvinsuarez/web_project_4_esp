@@ -1,7 +1,8 @@
 export default class Card {
-  constructor(data, cardElement) {
+  constructor(data, cardElement, popup) {
     this._cardData = data;
-    this._cardElement = cardElement ;
+    this._cardElement = cardElement;
+    this._popup = popup;
   }
 
   _createCardElement() {
@@ -44,8 +45,6 @@ export default class Card {
     const elementText=  createCard.querySelector(".cards__element-text-container")
     elementText.querySelector(".cards__element-text").textContent = this._cardData.name;
     elementImage.alt = this._cardData.name
-    const imageLegend = document.querySelector(".image-zoom__text");
-    imageLegend.textContent = this._cardData.name
     return createCard
   }
 
