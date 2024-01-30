@@ -44,7 +44,8 @@ export default class Card {
     const elementText=  createCard.querySelector(".cards__element-text-container")
     elementText.querySelector(".cards__element-text").textContent = this._cardData.name;
     elementImage.alt = this._cardData.name
-    
+    const imageLegend = document.querySelector(".image-zoom__text");
+    imageLegend.textContent = this._cardData.name
     return createCard
   }
 
