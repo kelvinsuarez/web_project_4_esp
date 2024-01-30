@@ -11,10 +11,13 @@ import {popup,
   closePlaceButton
 } from "../utils/constants.js"
 import Popup from "../components/Popup.js";
+import PopupWithForm from "../components/PopupWithForm.js";
 
 
-//instanca de Popup
+//instancia de Popup
 const popupEditProfile = new Popup ("#popup_container");
+//instancia de PopupWithForm
+const popupFormProfile = new PopupWithForm ("#popup_container", handleProfileFormSubmit())
 
 
 // controlador del boton agregar lugar
@@ -28,9 +31,7 @@ export function onClosePopupPlaceClick(){
 
 
 //funcion para editar perfil
-function handleProfileFormSubmit(evt) {
-  // Esta línea impide que el navegador entregue el formulario en su forma predeterminada.
-  evt.preventDefault();
+function handleProfileFormSubmit() {
   // Busquemos los campos del formulario en el DOM
   let nameValue = popup.querySelector(".popup__imput-text_name").value;
   let jobValue = popup.querySelector(".popup__imput-text_job").value;
@@ -39,13 +40,13 @@ function handleProfileFormSubmit(evt) {
   profileName.innerText= nameValue;
   profilejob.innerText= jobValue;
     
-  onClosePopupClick();
+  popupEditProfile.close();
 }
 
 
 // controlador del boton editar perfil
 function onEditButtonClick(){
-  popup.classList.remove("popup_opened");
+  popupFormProfile.open()
 }
 // controlador del boton cerrar editar perfil
 function onClosePopupClick(){
