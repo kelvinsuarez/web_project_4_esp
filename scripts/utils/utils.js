@@ -10,6 +10,11 @@ import {popup,
   addCardButton,
   closePlaceButton
 } from "../utils/constants.js"
+import Popup from "../components/Popup.js";
+
+
+//instanca de Popup
+const popupEditProfile = new Popup ("#popup_container");
 
 
 // controlador del boton agregar lugar
