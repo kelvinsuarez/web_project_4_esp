@@ -1,10 +1,9 @@
 import PopupWithImage from "./PopupWithImage.js";
 
 export default class Card {
-  constructor(data, cardElement, popup) {
+  constructor(data, cardElement) {
     this._cardData = data;
     this._cardElement = cardElement;
-    this._popup = popup;
     this._popupWhitImage = new PopupWithImage(".image-zoom");
   }
 
@@ -35,7 +34,7 @@ export default class Card {
   }
 
   _handleImageClick() {
-    this._popup.open(this._cardData.link, this._cardData.name);
+    this._popupWhitImage.open(this._cardData.link, this._cardData.name);
   }
 
   generateCard(){

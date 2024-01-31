@@ -1,33 +1,25 @@
 import Card from "../components/Card.js"
 import FormValidator from "../components/FormValidator.js"
 import agregarEventListeners from "../utils/utils.js";
-import { cerrarImagenClickOut } from "../utils/utils.js";
 import { onClosePopupPlaceClick } from "../utils/utils.js";
 import Section from "../components/Section.js";
 import { 
   initialCards,
   cardListSelector,
-  zoomImage,
-  closeImage,
  } from "../utils/constants.js";
- import PopupWithImage from "../components/PopupWithImage.js";
 
 
 //instancia de clase Section para renderizar las cartas
 const cardList = new Section ({ 
   items: initialCards,
     renderer: (cardItem) =>{
-        const card = new Card(cardItem, "#cards-template",popupWithImage);
+        const card = new Card(cardItem, "#cards-template");
         const cardElement = card.generateCard();
         cardList.setItem(cardElement);
     },
   },
   cardListSelector
 );
-
-//instancia de PopupWhithImage
-const popupWithImage = new PopupWithImage("#image-zoom_container");
-
 
 //funcion para agregar lugar
 export function handledAddPlaceFormSubmit (evt){
@@ -37,7 +29,7 @@ export function handledAddPlaceFormSubmit (evt){
   const newCard = new Card( {
     name : titleValue,
     link : picValue
-  },"#cards-template",popupWithImage)
+  },"#cards-template")
   
   cardList.setItem(newCard.generateCard());
   onClosePopupPlaceClick();
@@ -51,20 +43,6 @@ export default function init(){
 // Crear instancias para validadores de popupProfile y popupPlace
 const validateProfile = new FormValidator(document.querySelector("#form"));
 const validatePlace = new FormValidator(document.querySelector("#popup-place_container .form__popup"));
-
-//cerrar imagen
-closeImage.forEach(function(closeZoom){
-  closeZoom.addEventListener("click", closeZoomImage);
-})
-
-
-cerrarImagenClickOut();
-
-
-//funcion para cerrar las imagenes
-function closeZoomImage() {
-  popupWithImage.close()
-}
 
 
 

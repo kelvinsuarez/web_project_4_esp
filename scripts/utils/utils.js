@@ -2,33 +2,37 @@ import { handledAddPlaceFormSubmit } from "../pages/index.js";
 import init from "../pages/index.js";
 import {popup,
   popupPlace,
-  zoomImage,
   closeImageOut,
   editProfileButton,
   closeProfileButton,
   closeProfile,
   addCardButton,
-  closePlaceButton
+  closePlaceButton,
+  closeImage
 } from "../utils/constants.js"
 import Popup from "../components/Popup.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
 
 
 //instancia de Popup
-const popupEditProfile = new Popup ("#popup_container");
-//instancia de PopupWithForm
-const popupFormProfile = new PopupWithForm ("#popup_container", handleProfileFormSubmit())
+const popupEdit = new Popup ("#popup_container");
 
+//istancia de PopupWithImage
+const popupWithImage = new PopupWithImage("#image-zoom_container");
 
-// controlador del boton agregar lugar
-function onAddButtonClick(){
-  popupPlace.classList.remove("popup-place_opened");
+//instancias de PopupWithForm
+const popupFormProfile = new PopupWithForm ("#popup_container", handleProfileFormSubmit());
+const popupFormAddCard = new PopupWithForm ("#popup-place_container", handledAddPlaceFormSubmit);
+
+// controlador del boton editar perfil
+function onEditButtonClick(){
+  popupFormProfile.open()
 }
-// controlador del boton cerrar agregar lugar
-export function onClosePopupPlaceClick(){
-  popupPlace.classList.add("popup-place_opened");
+// controlador del boton cerrar editar perfil
+function onClosePopupClick(){
+  popup.classList.add("popup_opened");
 }
-
 
 //funcion para editar perfil
 function handleProfileFormSubmit() {
@@ -40,34 +44,17 @@ function handleProfileFormSubmit() {
   profileName.innerText= nameValue;
   profilejob.innerText= jobValue;
     
-  popupEditProfile.close();
+  popupEdit.close();
 }
 
-
-// controlador del boton editar perfil
-function onEditButtonClick(){
-  popupFormProfile.open()
+// controlador del boton agregar lugar
+function onAddButtonClick(){
+  popupFormAddCard.open()
 }
-// controlador del boton cerrar editar perfil
-function onClosePopupClick(){
-  popup.classList.add("popup_opened");
+// controlador del boton cerrar agregar lugar
+export function onClosePopupPlaceClick(){
+  popupFormAddCard.close();
 }
-
-
-export function cerrarImagenClickOut() {
-  closeImageOut.forEach(function (zoomImage) {
-    zoomImage.addEventListener("click", function (event) {
-      if (event.target === zoomImage) {
-        cerrarZoomImage(zoomImage);
-      }
-    });
-  });
-}
-
-function cerrarZoomImage(zoomImage) {
-  zoomImage.classList.add("image-zoom_opened")
-}
-
 
 
 export default function agregarEventListeners() {
@@ -88,24 +75,20 @@ export default function agregarEventListeners() {
       onClosePopupPlaceClick();
     }
   });
+ //manipuladores de eventos para cerrar las imagenes agrandadas
+  closeImage.forEach(function(closeZoom){
+    closeZoom.addEventListener("click", () =>{
+      popupWithImage.close()
+    });
+  })
+  closeImageOut.forEach(function (zoomImage) {
+    zoomImage.addEventListener("click", function (event) {
+      if (event.target === zoomImage) {
+        popupWithImage.close()
+      }
+    });
+  });
 
-  // //manipuladores de eventos para cerrar con bonton Esc
-  // document.addEventListener('keydown', (evt) => {
-  //   const buscdorDeClases = Array.from(closeImageOut).some(elemento =>{
-  //     return elemento.classList.contains("image-zoom");
-  //   })
-  //   if(evt.key == 'Escape'){
-  //     if(popup.classList.contains("popup")){
-  //       popup.classList.add("popup_opened")
-  //     }
-  //     if(popupPlace.classList.contains("popup-place")){
-  //       popupPlace.classList.add("popup-place_opened")
-  //     }
-  //     if (buscdorDeClases){
-  //       zoomImage.classList.add("image-zoom_opened")
-  //     }
-  //   }
-  // })
 
   // Conecta el manipulador de eventos enviar
   popup.addEventListener('submit', handleProfileFormSubmit);
