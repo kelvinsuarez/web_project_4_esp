@@ -91,9 +91,9 @@ export default function agregarEventListeners() {
 
 
   // Conecta el manipulador de eventos enviar
-  popup.addEventListener('submit', handleProfileFormSubmit);
+  popupFormProfile.setEventListeners()
 
-  popupPlace.addEventListener("submit", handledAddPlaceFormSubmit);
+  popupFormAddCard.setEventListeners()
 
 
   //controlador de eventos para inicializar las 6 cartas

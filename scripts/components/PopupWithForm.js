@@ -25,12 +25,12 @@ export default class PopupWithForm extends Popup {
     setEventListeners() {
         super.setEventListeners();
 
-        this._btnClose = this._popupElement.querySelector("#icon_close");
+        this.closeButton = this._popupElement.querySelector(".popup-save");
         this._formElement.addEventListener("submit",(evt) =>{
             evt.preventDefault();
             this._submitInfo(this._getImputValues());
         });
-        this._btnClose.addEventListener("click", () => {
+        this.closeButton.addEventListener("click", () => {
             this._handleAddClass();
         });
     }
