@@ -1,133 +1,197 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Al rededor de los Estados Unidos</title>
-        <link rel="stylesheet" href="pages/index.css">
-    </head>
-    <body>
-        <div class="root">
-            <header class="header">
-                <img class="header__logo" src="images/header/Vector.svg" alt="logo around the U.S">
-                <hr class="header__line">
-            </header>
-            <section class="profile">
-                <div class="profile__avatar">
-                    <div class="profile__elipce">
-                        <img class="profile__image" src="images/profile/profile-siluet.jpg" alt="foto de perfil">
-                    </div>
-                </div>
-                <div class="profile__into">
-                    <h2 class="profile__title">Jacques Cousteau</h2>
-                    <div class="profile__edit-button-square profile__edit-button-square_grey" > </div>
-                    <div class="profile__edit-button-square" id="edit-button">
-                        <img class="profile__edit-button-vector" src="images/profile/lapiz.svg" alt="imagen de silueta de lapiz">
-                    </div>
-                    <h3 class="profile__subtitle">Explorador</h3> 
-                </div>
-                <div class="profile__add-button profile__add-button_grey"> </div>
-                <div class="profile__add-button profile__add-button:hover">
-                    <img class="profile__add-button-cross" src="images/profile/button-add.svg" alt="cruz">
-                </div>
-            </section>
-            <section class="cards">
-            </section>
-            <footer class="footer">
-                <p class="footer__text">© 2023 Kelvin Suarez</p>
-            </footer>
-            <div class="image-zoom image-zoom_opened" id="image-zoom_container" >
-                <div class="image-zoom__group">
-                    <span class="image-zoom__icon-close image-zoom__icon-close:hover">+</span>
-                    <img class="image-zoom__container" src="https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg" alt="imagen agrandada">
-                    <h2 class="image-zoom__text">Aqui estoy</h2>
-                </div>
-            </div>
-            <div class="popup popup_opened form" id="popup_container" >
-                <div class="popup__group">
-                    <h2 class="popup__icon-close popup__icon-close:hover">+</h2>
-                    <form name="profile" class="popup__container form__popup" id="form" novalidate>
-                        <h2 class="popup__text" >Editar Perfil</h2>
-                        <input type="text" 
-                                id="nombre"
-                                name="nombre"
-                                placeholder="Nombre" 
-                                value="Jacques Cousteau" 
-                                minlength="2" maxlength="40" 
-                                class="popup__imput-text popup__imput-text_name form__imput-text"
-                                required
-                                autocomplete="off"
-                                >
-                        <span class="nombre-error form__input-show-error"></span>
-                        <input type="text" 
-                                id="acerca"
-                                name="acerca"
-                                placeholder="A cerca de mi"
-                                value="Explorador"
-                                minlength="2" maxlength="200"
-                                class="popup__imput-text popup__imput-text_job form__imput-text"
-                                required
-                                autocomplete="off"
-                                >
-                        <span class="acerca-error form__input-show-error"></span>
-                        <button class="popup-save popup__button-save popup__button-save:hover" id="button-save">Guardar</button>
-                    </form>
-                </div>
-            </div>
-            <div class="popup-place popup_opened form" id="popup-place_container" >
-                <div class="popup-place__group">
-                    <h2 class="popup-place__icon-close popup-place__icon-close:hover">+</h2>
-                    <form name="add_place" class="popup-place__container form__popup" novalidate>
-                        <h2 class="popup-place__text" >Nuevo Lugar</h2>
-                        <input 
-                            type="text"
-                            id="titulo"
-                            placeholder="Titulo"
-                            minlength="2" maxlength="30"
-                            value=""
-                            class="popup-place__imput-text popup-place__imput-text_title form__imput-text"
-                            required
-                            autocomplete="off"
-                            >
-                            <span class="titulo-error form__input-show-error"></span>
-                        <input type="url"
-                        id="url"
-                        placeholder="Imagen URL"
-                        minlength="2" maxlength="200"
-                        value=""
-                        class="popup-place__imput-text popup-place__imput-text_image form__imput-text"
-                        required
-                        autocomplete="off"
-                        >
-                        <span class="url-error form__input-show-error"></span>
-                        <button class="popup-save popup-place__button-save popup-place__button-save:hover">Guardar</button>
-                    </form>
-                </div>
-            </div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Al rededor de los Estados Unidos</title>
+    <link rel="stylesheet" href="pages/index.css" />
+  </head>
+  <body>
+    <div class="root">
+      <header class="header">
+        <img
+          class="header__logo"
+          src="images/header/Vector.svg"
+          alt="logo around the U.S"
+        />
+        <hr class="header__line" />
+      </header>
+      <section class="profile">
+        <div class="profile__avatar">
+          <div class="profile__elipce">
+            <img
+              class="profile__image"
+              src="images/profile/profile-siluet.jpg"
+              alt="foto de perfil"
+            />
+          </div>
         </div>
-        <template id="cards-template" class="cards-template">
-            <div class="cards__element">
-                <img class="cards__element-pic" src=" " alt="carta de paisaje">
-                
-                <img class="cards__element-trash cards__element-trash:hover" src="images/cards/trash-all.svg" alt="basurero">
-                
-                <div class="cards__element-text-container">
-                    <h2 class="cards__element-text">
-                        .
-                    </h2>
-                    <div class="cards__element-like cards__element-like:hover" >
-                        <img src="images/cards/like-grey.svg" alt="vector corazon">
-                        <div class="cards__element-like-black cards__element-like-black_on">
-                            <div class="cards__element-like-right-rectangle cards__element-like-parts"></div>
-                            <div class="cards__element-like-left-rectangle cards__element-like-parts"></div>
-                            <div class="cards__element-like-right-circle cards__element-like-parts"></div>
-                            <div class="cards__element-like-left-circle cards__element-like-parts"></div>
-                            <div class="cards__element-like-center-circle cards__element-like-parts"></div>
-                        </div>
-                    </div>
-                </div>
+        <div class="profile__into">
+          <h2 class="profile__title">Jacques Cousteau</h2>
+          <div
+            class="profile__edit-button-square profile__edit-button-square_grey"
+          ></div>
+          <div class="profile__edit-button-square" id="edit-button">
+            <img
+              class="profile__edit-button-vector"
+              src="images/profile/lapiz.svg"
+              alt="imagen de silueta de lapiz"
+            />
+          </div>
+          <h3 class="profile__subtitle">Explorador</h3>
+        </div>
+        <div class="profile__add-button profile__add-button_grey"></div>
+        <div class="profile__add-button profile__add-button:hover">
+          <img
+            class="profile__add-button-cross"
+            src="images/profile/button-add.svg"
+            alt="cruz"
+          />
+        </div>
+      </section>
+      <section class="cards"></section>
+      <footer class="footer">
+        <p class="footer__text">© 2023 Kelvin Suarez</p>
+      </footer>
+      <div class="image-zoom image-zoom_opened" id="image-zoom_container">
+        <div class="image-zoom__group">
+          <span class="image-zoom__icon-close image-zoom__icon-close:hover"
+            >+</span
+          >
+          <img
+            class="image-zoom__container"
+            src="https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg"
+            alt="imagen agrandada"
+          />
+          <h2 class="image-zoom__text">Aqui estoy</h2>
+        </div>
+      </div>
+      <div class="popup popup_opened form" id="popup_container">
+        <div class="popup__group">
+          <h2 class="popup__icon-close popup__icon-close:hover">+</h2>
+          <form
+            name="profile"
+            class="popup__container form__popup"
+            id="form"
+            novalidate
+          >
+            <h2 class="popup__text">Editar Perfil</h2>
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              placeholder="Nombre"
+              value="Jacques Cousteau"
+              minlength="2"
+              maxlength="40"
+              class="popup__imput-text popup__imput-text_name form__imput-text"
+              required
+              autocomplete="off"
+            />
+            <span class="nombre-error form__input-show-error"></span>
+            <input
+              type="text"
+              id="acerca"
+              name="acerca"
+              placeholder="A cerca de mi"
+              value="Explorador"
+              minlength="2"
+              maxlength="200"
+              class="popup__imput-text popup__imput-text_job form__imput-text"
+              required
+              autocomplete="off"
+            />
+            <span class="acerca-error form__input-show-error"></span>
+            <button
+              class="popup-save popup__button-save popup__button-save:hover"
+              id="button-save"
+            >
+              Guardar
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="popup-place popup_opened form" id="popup-place_container">
+        <div class="popup-place__group">
+          <h2 class="popup-place__icon-close popup-place__icon-close:hover">
+            +
+          </h2>
+          <form
+            name="add_place"
+            class="popup-place__container form__popup"
+            novalidate
+          >
+            <h2 class="popup-place__text">Nuevo Lugar</h2>
+            <input
+              type="text"
+              id="titulo"
+              placeholder="Titulo"
+              minlength="2"
+              maxlength="30"
+              value=""
+              class="popup-place__imput-text popup-place__imput-text_title form__imput-text"
+              required
+              autocomplete="off"
+              name="titulo"
+            />
+            <span class="titulo-error form__input-show-error"></span>
+            <input
+              type="url"
+              id="url"
+              placeholder="Imagen URL"
+              minlength="2"
+              maxlength="200"
+              value=""
+              class="popup-place__imput-text popup-place__imput-text_image form__imput-text"
+              required
+              autocomplete="off"
+              name="url"
+            />
+            <span class="url-error form__input-show-error"></span>
+            <button
+              class="popup-save popup-place__button-save popup-place__button-save:hover"
+            >
+              Guardar
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <template id="cards-template" class="cards-template">
+      <div class="cards__element">
+        <img class="cards__element-pic" src=" " alt="carta de paisaje" />
+
+        <img
+          class="cards__element-trash cards__element-trash:hover"
+          src="images/cards/trash-all.svg"
+          alt="basurero"
+        />
+
+        <div class="cards__element-text-container">
+          <h2 class="cards__element-text">.</h2>
+          <div class="cards__element-like cards__element-like:hover">
+            <img src="images/cards/like-grey.svg" alt="vector corazon" />
+            <div class="cards__element-like-black cards__element-like-black_on">
+              <div
+                class="cards__element-like-right-rectangle cards__element-like-parts"
+              ></div>
+              <div
+                class="cards__element-like-left-rectangle cards__element-like-parts"
+              ></div>
+              <div
+                class="cards__element-like-right-circle cards__element-like-parts"
+              ></div>
+              <div
+                class="cards__element-like-left-circle cards__element-like-parts"
+              ></div>
+              <div
+                class="cards__element-like-center-circle cards__element-like-parts"
+              ></div>
             </div>
-        </template>
-        <script type="module"  src="./scripts/pages/index.js"></script>
-    </body>
+          </div>
+        </div>
+      </div>
+    </template>
+    <script type="module" src="./scripts/pages/index.js"></script>
+  </body>
 </html>
