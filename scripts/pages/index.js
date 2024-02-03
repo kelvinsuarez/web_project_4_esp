@@ -22,8 +22,8 @@ const cardList = new Section ({
 );
 
 //funcion para agregar lugar
-export function handledAddPlaceFormSubmit (evt){
-  evt.preventDefault();
+export function handledAddPlaceFormSubmit() {
+  
   const titleValue = document.querySelector(".popup-place__imput-text_title").value;
   const picValue = document.querySelector(".popup-place__imput-text_image").value;
   const newCard = new Card( {

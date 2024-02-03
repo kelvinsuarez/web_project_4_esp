@@ -57,10 +57,6 @@ export default class FormValidator {
   enableValidation() {
     this.formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
-      setTimeout(() => {
-        this.formElement.reset();
-        this.toggleButtonState()
-      }, 100);
     });
     this.setEventListeners();
   }

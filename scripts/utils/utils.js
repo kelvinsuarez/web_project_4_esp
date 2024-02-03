@@ -15,6 +15,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 
 
+
 //instancia de Popup
 const popupEdit = new Popup ("#popup_container");
 
@@ -22,8 +23,9 @@ const popupEdit = new Popup ("#popup_container");
 const popupWithImage = new PopupWithImage("#image-zoom_container");
 
 //instancias de PopupWithForm
-const popupFormProfile = new PopupWithForm ("#popup_container", handleProfileFormSubmit());
+const popupFormProfile = new PopupWithForm ("#popup_container", handleProfileFormSubmit);
 const popupFormAddCard = new PopupWithForm ("#popup-place_container", handledAddPlaceFormSubmit);
+
 
 // controlador del boton editar perfil
 function onEditButtonClick(){
@@ -35,14 +37,15 @@ function onClosePopupClick(){
 }
 
 //funcion para editar perfil
-function handleProfileFormSubmit() {
+function handleProfileFormSubmit(values) {
   // Busquemos los campos del formulario en el DOM
   let nameValue = popup.querySelector(".popup__imput-text_name").value;
   let jobValue = popup.querySelector(".popup__imput-text_job").value;
   let profileName= document.querySelector(".profile__title");
   let profilejob= document.querySelector(".profile__subtitle");
-  profileName.innerText= nameValue;
-  profilejob.innerText= jobValue;
+  profileName.innerText= nombre.value;
+  profilejob.innerText= acerca.value;
+  
     
   popupEdit.close();
 }
