@@ -6,6 +6,7 @@ import Section from "../components/Section.js";
 import { 
   initialCards,
   cardListSelector,
+  settingElement,
  } from "../utils/constants.js";
 
 
@@ -40,12 +41,12 @@ export default function init(){
   cardList.renderer();
 }
 
-// Crear instancias para validadores de popupProfile y popupPlace
-const validateProfile = new FormValidator(document.querySelector("#form"));
-const validatePlace = new FormValidator(document.querySelector("#popup-place_container .form__popup"));
-
-
-
+// Array de instacias de FormValidator
+const formList = Array.from(document.querySelectorAll(".form__popup"));
+formList.forEach((formElement)=> {
+  const formValidator = new FormValidator (settingElement,formElement);
+  formValidator.enableValidation();
+});
 agregarEventListeners();
 
 

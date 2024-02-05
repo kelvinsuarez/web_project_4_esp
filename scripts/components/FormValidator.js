@@ -1,65 +1,74 @@
 export default class FormValidator {
-  constructor(formElement) {
-    this.formElement = formElement;
-    this.inputList = Array.from(formElement.querySelectorAll(".form__imput-text"));
-    this.buttonElement = formElement.querySelector(".popup-save");
+  constructor(setting, formElement) {
+    // Selectores
+    this._inputSelector = setting.inputSelector;
+    this._submitButtonSelector = setting.submitButtonSelector;
+    this._buttonSaveOff = setting.buttonSaveOff;
+    this._inputErrorClass = setting.inputErrorClass;
+    this._errorClass = setting.errorClass;
+    this._formElement = formElement;
+    // Botón de guardado
+    this._buttonElement = formElement.querySelector(".popup-save");
+    // Input list
+    this._inputList = Array.from(formElement.querySelectorAll("input"));
+    // Habilitar validación y agregar el event listener
     this.enableValidation();
   }
-  
-  showInputError(inputElement, errorMessage) {
-    const formProfileError = this.formElement.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.add("form__input-text_type_error");
-    formProfileError.textContent = errorMessage;
-    formProfileError.classList.add("form__input-show-error");
-  }
-  
-  hideInputError(inputElement) {
-    const formProfileError = this.formElement.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.remove("form__input-text_type_error");
-    formProfileError.classList.remove("form__input-show-error");
-    formProfileError.textContent = "";
-  }
-  
-  isValid(inputElement) {
-    if (!inputElement.validity.valid) {
-      this.showInputError(inputElement, inputElement.validationMessage);
-    } else {
-      this.hideInputError(inputElement);
-    }
-  }
-  
-  hasInvalidInput() {
-    return this.inputList.some((inputElement) => {
-      return !inputElement.validity.valid
-    });
-  }
-  
-  toggleButtonState() {
-    if (this.hasInvalidInput()) {
-      this.buttonElement.classList.add("popup__button-save-off");
-      this.buttonElement.setAttribute("disabled", true);
-    } else {
-      this.buttonElement.classList.remove("popup__button-save-off");
-      this.buttonElement.removeAttribute("disabled");
-    }
-  }
-  
-  setEventListeners() {
-    this.toggleButtonState();
-    this.inputList.forEach((inputElement) => {
+
+  enableValidation() {
+    this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
-        this.isValid(inputElement);
-        this.toggleButtonState();
+        this._isValid(inputElement);
+        this._toggleButtonState();
       });
     });
-  }
-  
-  enableValidation() {
-    this.formElement.addEventListener("submit", (evt) => {
+
+    this._formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
     });
-    this.setEventListeners();
   }
 
+  _isValid(inputElement) {
+    const formProfileError = this._formElement.querySelector(`.${inputElement.id}-error`);
+
+    if (!inputElement.validity.valid) {
+      this._showInputError(inputElement, formProfileError, inputElement.validationMessage);
+    } else {
+      this._hideInputError(inputElement, formProfileError);
+    }
+  }
+
+  _showInputError(inputElement, errorElement, errorMessage) {
+    inputElement.classList.add(this._inputErrorClass);
+    errorElement.textContent = errorMessage;
+    errorElement.classList.add(this._errorClass);
+  }
+
+  _hideInputError(inputElement, errorElement) {
+    inputElement.classList.remove(this._inputErrorClass);
+    errorElement.classList.remove(this._errorClass);
+    errorElement.textContent = "";
+  }
+
+  _toggleButtonState() {
+    if (this._hasInvalidInput()) {
+      this._disabledButton();
+    } else {
+      this._enabledButton();
+    }
+  }
+
+  _hasInvalidInput() {
+    return this._inputList.some((inputElement) => !inputElement.validity.valid);
+  }
+
+  _disabledButton() {
+    this._buttonElement.classList.add(this._buttonSaveOff);
+    this._buttonElement.setAttribute("disabled", true);
+  }
+
+  _enabledButton() {
+    this._buttonElement.classList.remove(this._buttonSaveOff);
+    this._buttonElement.removeAttribute("disabled");
+  }
 }
-  
