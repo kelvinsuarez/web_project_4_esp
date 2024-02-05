@@ -53,3 +53,7 @@ export const closePlaceButton = document.querySelector(".popup-place__icon-close
     inputErrorClass: "form__input-text_type_error",
     errorClass: "form__input-show-error",
 };
+
+//constantes de los datos de perfirl
+export const inputName = document.querySelector("#nombre");
+export const inputAcerca = document.querySelector("#acerca");

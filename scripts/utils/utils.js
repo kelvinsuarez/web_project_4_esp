@@ -8,13 +8,21 @@ import {popup,
   closeProfile,
   addCardButton,
   closePlaceButton,
-  closeImage
+  closeImage,
+  inputName,
+  inputAcerca,
 } from "../utils/constants.js"
 import Popup from "../components/Popup.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
+import UserInfo from "../components/UserInfo.js";
 
 
+//intancia de Useriinfo
+const userInfo = new UserInfo ({
+  dataName: ".profile__title",
+  dataJob: ".profile__subtitle",
+})
 
 //instancia de Popup
 const popupEdit = new Popup ("#popup_container");
@@ -37,16 +45,13 @@ function onClosePopupClick(){
 }
 
 //funcion para editar perfil
-function handleProfileFormSubmit(values) {
-  // Busquemos los campos del formulario en el DOM
-  let nameValue = popup.querySelector(".popup__imput-text_name").value;
-  let jobValue = popup.querySelector(".popup__imput-text_job").value;
-  let profileName= document.querySelector(".profile__title");
-  let profilejob= document.querySelector(".profile__subtitle");
-  profileName.innerText= nombre.value;
-  profilejob.innerText= acerca.value;
+function handleProfileFormSubmit() {
+  // Utiliza la instancia de UserInfo para actualizar la información del usuario
+  userInfo.setUserInfo({
+    name: inputName.value,
+    job: inputAcerca.value,
+  });
   
-    
   popupEdit.close();
 }
 
