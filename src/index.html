@@ -4,31 +4,30 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Al rededor de los Estados Unidos</title>
-        <link rel="stylesheet" href="pages/index.css">
     </head>
     <body>
         <div class="root">
             <header class="header">
-                <img class="header__logo" src="images/header/Vector.svg" alt="logo around the U.S">
+                <img class="header__logo" src="<%= require('./images/header/Vector.svg')%>" alt="logo around the U.S">
                 <hr class="header__line">
             </header>
             <section class="profile">
                 <div class="profile__avatar">
                     <div class="profile__elipce">
-                        <img class="profile__image" src="images/profile/profile-siluet.jpg" alt="foto de perfil">
+                        <img class="profile__image" src="<%= require('./images/profile/profile-siluet.jpg')%>" alt="foto de perfil">
                     </div>
                 </div>
                 <div class="profile__into">
                     <h2 class="profile__title">Jacques Cousteau</h2>
                     <div class="profile__edit-button-square profile__edit-button-square_grey" > </div>
                     <div class="profile__edit-button-square" id="edit-button">
-                        <img class="profile__edit-button-vector" src="images/profile/lapiz.svg" alt="imagen de silueta de lapiz">
+                        <img class="profile__edit-button-vector" src="<%= require('./images/profile/lapiz.svg')%>" alt="imagen de silueta de lapiz">
                     </div>
                     <h3 class="profile__subtitle">Explorador</h3> 
                 </div>
                 <div class="profile__add-button profile__add-button_grey"> </div>
                 <div class="profile__add-button profile__add-button:hover">
-                    <img class="profile__add-button-cross" src="images/profile/button-add.svg" alt="cruz">
+                    <img class="profile__add-button-cross" src="<%= require('./images/profile/button-add.svg')%>" alt="cruz">
                 </div>
             </section>
             <section class="cards">
@@ -109,14 +108,14 @@
             <div class="cards__element">
                 <img class="cards__element-pic" src=" " alt="carta de paisaje">
                 
-                <img class="cards__element-trash cards__element-trash:hover" src="images/cards/trash-all.svg" alt="basurero">
+                <img class="cards__element-trash cards__element-trash:hover" src="<%= require('./images/cards/trash-all.svg')%>" alt="basurero">
                 
                 <div class="cards__element-text-container">
                     <h2 class="cards__element-text">
                         .
                     </h2>
                     <div class="cards__element-like cards__element-like:hover" >
-                        <img src="images/cards/like-grey.svg" alt="vector corazon">
+                        <img src="<%= require('./images/cards/like-grey.svg')%>" alt="vector corazon">
                         <div class="cards__element-like-black cards__element-like-black_on">
                             <div class="cards__element-like-right-rectangle cards__element-like-parts"></div>
                             <div class="cards__element-like-left-rectangle cards__element-like-parts"></div>
@@ -128,6 +127,6 @@
                 </div>
             </div>
         </template>
-        <script type="module"  src="./scripts/pages/index.js"></script>
+        <script type="module"  src="./index.js"></script>
     </body>
 </html>

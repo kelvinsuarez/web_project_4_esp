@@ -1,13 +1,14 @@
-import Card from "../components/Card.js"
-import FormValidator from "../components/FormValidator.js"
-import agregarEventListeners from "../utils/utils.js";
-import { onClosePopupPlaceClick } from "../utils/utils.js";
-import Section from "../components/Section.js";
+import "./styles/index.css"
+import Card from "./scripts/components/Card.js"
+import FormValidator from "./scripts/components/FormValidator.js"
+import agregarEventListeners from "./scripts/utils/utils.js";
+import { onClosePopupPlaceClick } from "./scripts/utils/utils.js";
+import Section from "./scripts/components/Section.js";
 import { 
   initialCards,
   cardListSelector,
   settingElement,
- } from "../utils/constants.js";
+ } from "./scripts/utils/constants.js";
 
 
 //instancia de clase Section para renderizar las cartas
