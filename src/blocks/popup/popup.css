@@ -13,7 +13,7 @@
     transition: all .7s ease;
 }
 
-.popup_opened{
+.popup-opened{
     visibility: hidden;
     opacity: 0;
 }

@@ -41,7 +41,7 @@ function onEditButtonClick(){
 }
 // controlador del boton cerrar editar perfil
 function onClosePopupClick(){
-  popup.classList.add("popup_opened");
+  popup.classList.add("popup-opened");
 }
 
 //funcion para editar perfil
