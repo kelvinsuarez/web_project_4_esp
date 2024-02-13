@@ -30,6 +30,8 @@ export default class PopupWithForm extends Popup {
             evt.preventDefault();
             this._submitInfo(this._getImputValues());
             evt.target.reset();
+            evt.target.querySelector('.popup-save').disabled = true;
+            evt.target.querySelector('.popup-save').classList.add('popup__button-save-off');
         });
         this.closeButton.addEventListener("click", () => {
             this._handleAddClass();
