@@ -57,3 +57,5 @@ export const closePlaceButton = document.querySelector(".popup-place__icon-close
 //constantes de los datos de perfirl
 export const inputName = document.querySelector("#nombre");
 export const inputAcerca = document.querySelector("#acerca");
+
+export const apiKey = "ddd525c3-4e22-45dd-b59e-e1d482e580b4"

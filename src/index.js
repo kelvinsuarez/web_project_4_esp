@@ -4,10 +4,12 @@ import FormValidator from "./scripts/components/FormValidator.js"
 import agregarEventListeners from "./scripts/utils/utils.js";
 import { onClosePopupPlaceClick } from "./scripts/utils/utils.js";
 import Section from "./scripts/components/Section.js";
+import Api from "./scripts/components/Api.js";
 import { 
   initialCards,
   cardListSelector,
   settingElement,
+  apiKey,
  } from "./scripts/utils/constants.js";
 
 
@@ -51,8 +53,9 @@ formList.forEach((formElement)=> {
 agregarEventListeners();
 
 
-
-
+const api = new Api (apiKey);
+api.getUserInfoFronServer();
+api.getCards();
 
 
 
