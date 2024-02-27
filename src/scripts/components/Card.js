@@ -1,4 +1,5 @@
 import PopupWithImage from "./PopupWithImage.js";
+import { popupConfirmation } from "../utils/constants.js";
 
 export default class Card {
   constructor(data, cardElement) {
@@ -25,6 +26,13 @@ export default class Card {
 
     const viewImage = createCard.querySelector(".cards__element-pic");
     viewImage.addEventListener("click", () => this._handleImageClick());
+
+    // const trash = createCard.querySelector(".cards__element-trash");
+    // trash.addEventListener("click", (evt) =>{
+    //   if (popupConfirmation.classList.contains("popup-confirmation-opened")){
+    //     popupConfirmation.classList.remove("popup-confirmation-opened")
+    //   }
+    // })
 
     const trash = createCard.querySelector(".cards__element-trash");
     trash.addEventListener("click", (evt) =>{

@@ -1,5 +1,5 @@
 export default class Api{
-    constructor({apiKey}){
+    constructor(apiKey){
         this._authorization = apiKey;
     }
 

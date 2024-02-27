@@ -53,9 +53,10 @@ formList.forEach((formElement)=> {
 agregarEventListeners();
 
 
-const api = new Api (apiKey);
-api.getUserInfoFronServer();
-api.getCards();
+// const api = new Api (apiKey);
+// const apis = await api.getUserInfoFronServer();
+// console.log(apis)
+
 
 
 
