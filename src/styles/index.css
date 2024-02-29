@@ -50,3 +50,11 @@
 @import url(../blocks/popup-confirmation/__group/__container/popup-confirmation__container.css);
 @import url(../blocks/popup-confirmation/__group/__container/__text/popup-confirmation__text.css);
 @import url(../blocks/popup-confirmation/__group/__container/__button-delete/popup-confirmation__button-delete.css);
+@import url(../blocks/popup-image-profile/popup-image-profile.css);
+@import url(../blocks/popup-image-profile/__group/popup-image-profile__group.css);
+@import url(../blocks/popup-image-profile/__group/__container/popup-image-profile__container.css);
+@import url(../blocks/popup-image-profile/__group/__container/__button-save/popup-image-profile__button-save.css);
+@import url(../blocks/popup-image-profile/__group/__container/__imput-text/popup-image-profile__imput-text.css);
+@import url(../blocks/popup-image-profile/__group/__container/__text/popup-image-profile__text.css);
+@import url(../blocks/popup-image-profile/__group/__icon-close/popup-image-profile__icon-close.css);
+@import url(../blocks/profile/__avatar/__elipce/__image-edit/profile__image-edit.css);

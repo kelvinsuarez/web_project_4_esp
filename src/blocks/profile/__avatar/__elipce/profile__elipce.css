@@ -1,8 +1,12 @@
 .profile__elipce{
     border-radius: 50%;
+    justify-content: center;
+    display: flex;
     overflow: hidden;
     width: 120px;
+    align-items: center;
     height: 120px;
+    position: relative;
 }
 
 @media screen and (max-width: 768px) {
