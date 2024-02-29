@@ -5,7 +5,6 @@ import {popup,
   closeImageOut,
   editProfileButton,
   closeProfileButton,
-  closeProfile,
   addCardButton,
   closePlaceButton,
   closeImage,
@@ -70,8 +69,8 @@ export default function agregarEventListeners() {
   //manipuladores de eventos para abrir y cerrar editar perfil
   editProfileButton.addEventListener("click", onEditButtonClick);
   closeProfileButton.addEventListener("click", onClosePopupClick);
-  closeProfile.addEventListener("click", function(evt){
-    if (evt.target === closeProfile){
+  popup.addEventListener("click", function(evt){
+    if (evt.target === popup){
       onClosePopupClick();
     }
   });

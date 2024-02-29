@@ -40,7 +40,6 @@ export const closePlaceButton = document.querySelector(".popup-place__icon-close
 
  //botones para los manejadores de eventos de click para abrir ventanas modales
  export const editProfileButton = document.querySelector(".profile__edit-button-square");
- export const closeProfile = document.querySelector(".popup");
  export const addCardButton = document.querySelector(".profile__add-button");
  
  // selector de contenedor de cartas
