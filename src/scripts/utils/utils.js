@@ -10,6 +10,7 @@ import {popup,
   editProfileImage,
   closeProfileImage,
   closeImage,
+  popupConfirmation,
   inputName,
   inputAcerca,
   inputProfilePic,
@@ -29,7 +30,7 @@ const userInfo = new UserInfo ({
 
 console.log(userInfo._dataPic)
 //instancia de Popup
-const popupEdit = new Popup ("#popup_container");
+export const popupEdit = new Popup ("#popup_container");
 
 //istancia de PopupWithImage
 const popupWithImage = new PopupWithImage("#image-zoom_container");
@@ -111,6 +112,13 @@ export default function agregarEventListeners() {
   editProfileImage.addEventListener("click", onEditPicProfileButtonClick);
   closeProfileImage.addEventListener("click", onClosePicProfileClick);
 
+  //manipuladores de eventos para cerrar popup de confirmacion para borrar cartas
+  const closeConfirmationDelete = document.querySelector(".popup-confirmation__icon-close");
+  closeConfirmationDelete.addEventListener("click", ()=>{
+    if(!popupConfirmation.classList.contains("popup-confirmation-opened")){
+      popupConfirmation.classList.add("popup-confirmation-opened");
+    }
+  })
 
  //manipuladores de eventos para cerrar las imagenes agrandadas
   closeImage.forEach(function(closeZoom){

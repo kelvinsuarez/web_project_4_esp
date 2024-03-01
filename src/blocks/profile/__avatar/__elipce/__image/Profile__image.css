@@ -1,6 +1,6 @@
 .profile__image{
     width: 100%;
-    height: auto;
+    height: 100%;
 }
 
 @media screen and (max-width: 768px) {
