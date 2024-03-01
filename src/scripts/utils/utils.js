@@ -7,9 +7,12 @@ import {popup,
   closeProfileButton,
   addCardButton,
   closePlaceButton,
+  editProfileImage,
+  closeProfileImage,
   closeImage,
   inputName,
   inputAcerca,
+  inputProfilePic,
 } from "../utils/constants.js"
 import Popup from "../components/Popup.js";
 import PopupWithForm from "../components/PopupWithForm.js";
@@ -21,8 +24,10 @@ import UserInfo from "../components/UserInfo.js";
 const userInfo = new UserInfo ({
   dataName: ".profile__title",
   dataJob: ".profile__subtitle",
+  dataPic: ".profile__image",
 })
 
+console.log(userInfo._dataPic)
 //instancia de Popup
 const popupEdit = new Popup ("#popup_container");
 
@@ -32,6 +37,7 @@ const popupWithImage = new PopupWithImage("#image-zoom_container");
 //instancias de PopupWithForm
 const popupFormProfile = new PopupWithForm ("#popup_container", handleProfileFormSubmit);
 const popupFormAddCard = new PopupWithForm ("#popup-place_container", handledAddPlaceFormSubmit);
+const popupFormProfileImage = new PopupWithForm ("#popup-image-profile_container", handleImageProfileFormSubmit)
 
 
 // controlador del boton editar perfil
@@ -63,6 +69,24 @@ export function onClosePopupPlaceClick(){
   popupFormAddCard.close();
 }
 
+//funcion para cambiar imagen de perfil
+function handleImageProfileFormSubmit(){
+  userInfo.setUserInfo({
+    pic: inputProfilePic.value,
+  });
+  popupFormProfileImage.close();
+}
+
+// controlador del boton editar foto de perfil
+function onEditPicProfileButtonClick(){
+  popupFormProfileImage.open();
+}
+
+// controlador del boton cerrar editar foto de perfil
+function onClosePicProfileClick(){
+  popupFormProfileImage.close();
+}
+
 
 export default function agregarEventListeners() {
 
@@ -82,6 +106,12 @@ export default function agregarEventListeners() {
       onClosePopupPlaceClick();
     }
   });
+  
+  //manipuladores de eventos para abrir y cerrar cambiar imagen de perfil
+  editProfileImage.addEventListener("click", onEditPicProfileButtonClick);
+  closeProfileImage.addEventListener("click", onClosePicProfileClick);
+
+
  //manipuladores de eventos para cerrar las imagenes agrandadas
   closeImage.forEach(function(closeZoom){
     closeZoom.addEventListener("click", () =>{
@@ -102,7 +132,7 @@ export default function agregarEventListeners() {
 
   popupFormAddCard.setEventListeners()
 
-
+  popupFormProfileImage.setEventListeners()
   //controlador de eventos para inicializar las 6 cartas
   document.addEventListener("DOMContentLoaded", init);
 }

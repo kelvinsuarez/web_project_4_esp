@@ -19,7 +19,7 @@ export default class PopupWithForm extends Popup {
     }
     
     _handleAddClass() {
-        this._popupElement.classList.add(".popup-place_opened");
+        this._popupElement.classList.add("popup-place_opened");
     }
 
     setEventListeners() {
