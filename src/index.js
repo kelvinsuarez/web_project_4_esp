@@ -53,9 +53,9 @@ formList.forEach((formElement)=> {
 agregarEventListeners();
 
 
-// const api = new Api (apiKey);
-// const apis = await api.getUserInfoFronServer();
-// console.log(apis)
+const api = new Api (apiKey);
+const apis = await api.getUserInfoFronServer();
+console.log(apis)
 
 
 
