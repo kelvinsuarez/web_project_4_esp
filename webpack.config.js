@@ -10,14 +10,15 @@ module.exports= {
     },
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: 'main.js',
+        filename: 'js/[name].js',
         publicPath: "",
+        assetModuleFilename: 'images/[name][ext][query]'
     },
     target: ['web', 'es5'],
     stats: { children: true },
     mode: 'development',
     devServer: {
-        static: path.resolve(__dirname, './dist'), // especifica una carpeta desde donde servir la aplicación y su contenido
+        contentBase: path.resolve(__dirname, './dist'),
         compress: true, // esto acelerará la carga de archivos en el modo de desarrollo
         port: 8080, // abrirá tu página en localhost:8080 (puedes usar otro puerto)
         open: true,// se abrirá automáticamente en el navegador después de ejecutar npm run dev
@@ -53,8 +54,12 @@ module.exports= {
       },
       plugins: [
         new HtmlWebpackPlugin({
-            template: "./src/index.html" // ruta a nuestro archivo index.html
-          }),
+          inject: true,
+          template: "./src/index.html",
+          filename: `index.html`,
+          chunks: ['app']
+          }
+        ),
           new CleanWebpackPlugin(),
           new MiniCssExtractPlugin() // conecta el plugin para fusionar archivos CSS
       ],
