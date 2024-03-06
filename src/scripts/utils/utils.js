@@ -22,13 +22,12 @@ import UserInfo from "../components/UserInfo.js";
 
 
 //intancia de Useriinfo
-const userInfo = new UserInfo ({
+export const userInfo = new UserInfo ({
   dataName: ".profile__title",
   dataJob: ".profile__subtitle",
   dataPic: ".profile__image",
 })
 
-console.log(userInfo._dataPic)
 //instancia de Popup
 export const popupEdit = new Popup ("#popup_container");
 
@@ -87,7 +86,6 @@ function onEditPicProfileButtonClick(){
 function onClosePicProfileClick(){
   popupFormProfileImage.close();
 }
-
 
 export default function agregarEventListeners() {
 

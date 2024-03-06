@@ -2,7 +2,7 @@ import "./styles/index.css"
 import Card from "./scripts/components/Card.js"
 import FormValidator from "./scripts/components/FormValidator.js"
 import agregarEventListeners from "./scripts/utils/utils.js";
-import { onClosePopupPlaceClick } from "./scripts/utils/utils.js";
+import { onClosePopupPlaceClick, userInfo } from "./scripts/utils/utils.js";
 import Section from "./scripts/components/Section.js";
 import Api from "./scripts/components/Api.js";
 import { 
@@ -24,6 +24,14 @@ const cardList = new Section ({
   },
   cardListSelector
 );
+//funcion cargar los datos del servidor
+async function infoProfile(userInfoFronServer){
+  userInfo.setUserInfo({
+    name: userInfoFronServer.name,
+    job: userInfoFronServer.about,
+    pic: userInfoFronServer.avatar
+  })
+}
 
 //funcion para agregar lugar
 export function handledAddPlaceFormSubmit() {
@@ -40,8 +48,11 @@ export function handledAddPlaceFormSubmit() {
 }
 
 //Funcion para inicializar las 6 cartas y manter las funciones dentro de ellas
-export default function init(){
+export default async function init(){
+  const userInfoFronServer = await api.getUserInfoFronServer();
+  console.log(userInfoFronServer);
   cardList.renderer();
+  infoProfile(userInfoFronServer);
 }
 
 // Array de instacias de FormValidator
@@ -54,8 +65,8 @@ agregarEventListeners();
 
 
 const api = new Api (apiKey);
-const apis = await api.getUserInfoFronServer();
-console.log(apis)
+const userInfoFronServer = await api.getUserInfoFronServer();
+console.log(userInfoFronServer)
 
 
 

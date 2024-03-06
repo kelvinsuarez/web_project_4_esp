@@ -9,6 +9,7 @@ export default class UserInfo {
         return {
             name: this._dataName.textContent,
             job: this._dataJob.textContent,
+            pic: this._dataPic.getAttribute('src')
         };
     }
 

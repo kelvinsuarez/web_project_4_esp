@@ -19,9 +19,11 @@ export default class Card {
 
   _setEventListeners(createCard) {
     const like = createCard.querySelector(".cards__element-like");
+    const likeCounter = createCard.querySelector(".cards__element-like-counter");
     like.addEventListener("click", (evt) =>{
       const likeElement = evt.currentTarget.querySelector(".cards__element-like-black");
       likeElement.classList.toggle("cards__element-like-black_on");
+      likeCounter.textContent = Number(likeCounter.textContent) + 1
     });
 
     const viewImage = createCard.querySelector(".cards__element-pic");
