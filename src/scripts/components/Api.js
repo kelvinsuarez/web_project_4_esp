@@ -7,7 +7,7 @@ export default class Api{
         const res = await fetch(url, {
             headers: {
                 authorization: this._authorization,
-                "content-type": "aplication/json"
+                "content-type": "application/json"
             },
             method,
             body: JSON.stringify(body)
@@ -38,6 +38,22 @@ export default class Api{
             );
             return res;
         }catch (err) {
+            console.log(err);
+        }
+    }
+
+    async saveDataToServer(name, job) {
+        try{
+            const res = await this._useFetch(
+                "https://around.nomoreparties.co/v1/web_es_11/users/me",
+                "PATCH",
+                {
+                    name,
+                    job,
+                }
+            );
+            return res;
+        } catch (err) {
             console.log(err);
         }
     }

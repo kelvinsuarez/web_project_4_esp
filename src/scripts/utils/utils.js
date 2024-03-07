@@ -14,11 +14,13 @@ import {popup,
   inputName,
   inputAcerca,
   inputProfilePic,
+  apiKey,
 } from "../utils/constants.js"
 import Popup from "../components/Popup.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
+import Api from "../components/Api.js";
 
 
 //intancia de Useriinfo
@@ -27,6 +29,9 @@ export const userInfo = new UserInfo ({
   dataJob: ".profile__subtitle",
   dataPic: ".profile__image",
 })
+
+//instancia de Api
+export const api = new Api (apiKey)
 
 //instancia de Popup
 export const popupEdit = new Popup ("#popup_container");
@@ -50,12 +55,19 @@ function onClosePopupClick(){
 }
 
 //funcion para editar perfil
-function handleProfileFormSubmit() {
+async function handleProfileFormSubmit() {
   // Utiliza la instancia de UserInfo para actualizar la información del usuario
   userInfo.setUserInfo({
     name: inputName.value,
     job: inputAcerca.value,
   });
+
+  try {
+    const res = await api.saveDataToServer(inputName.value, inputAcerca.value);
+    return res;
+  }catch (err) {
+    console.log(err);
+  }
   
   popupEdit.close();
 }

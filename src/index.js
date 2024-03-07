@@ -2,28 +2,49 @@ import "./styles/index.css"
 import Card from "./scripts/components/Card.js"
 import FormValidator from "./scripts/components/FormValidator.js"
 import agregarEventListeners from "./scripts/utils/utils.js";
-import { onClosePopupPlaceClick, userInfo } from "./scripts/utils/utils.js";
+import { 
+  onClosePopupPlaceClick, 
+  userInfo,
+  api,
+ } from "./scripts/utils/utils.js";
 import Section from "./scripts/components/Section.js";
-import Api from "./scripts/components/Api.js";
 import { 
   initialCards,
   cardListSelector,
   settingElement,
-  apiKey,
  } from "./scripts/utils/constants.js";
 
 
 //instancia de clase Section para renderizar las cartas
-const cardList = new Section ({ 
-  items: initialCards,
-    renderer: (cardItem) =>{
-        const card = new Card(cardItem, "#cards-template");
-        const cardElement = card.generateCard();
-        cardList.setItem(cardElement);
+let cardList;
+async function initializePage(){
+  const getCards = await api.getCards();
+  const userInfoFronServer= await api.getUserInfoFronServer();
+  const userId = userInfoFronServer._id;
+
+  cardList = new Section ({ 
+    items: getCards.map((card) =>{
+      const canBeDelete = card.owner._id == userId;
+      return {
+        name: card.name,
+        link: card.link,
+        _id: card.id,
+        canBeDelete: canBeDelete,
+        likes: card.likes,
+      };
+    }),
+      renderer: (cardItem) =>{
+          const card = new Card(cardItem, "#cards-template");
+          const cardElement = card.generateCard();
+          cardList.setItem(cardElement);
+      },
     },
-  },
-  cardListSelector
-);
+    cardListSelector
+  );
+  cardList.renderer();
+};
+
+
 //funcion cargar los datos del servidor
 async function infoProfile(userInfoFronServer){
   userInfo.setUserInfo({
@@ -51,7 +72,7 @@ export function handledAddPlaceFormSubmit() {
 export default async function init(){
   const userInfoFronServer = await api.getUserInfoFronServer();
   console.log(userInfoFronServer);
-  cardList.renderer();
+  initializePage();
   infoProfile(userInfoFronServer);
 }
 
@@ -64,9 +85,10 @@ formList.forEach((formElement)=> {
 agregarEventListeners();
 
 
-const api = new Api (apiKey);
-const userInfoFronServer = await api.getUserInfoFronServer();
-console.log(userInfoFronServer)
+// const getCards = await api.getCards();
+// const userInfoFronServer= await api.getUserInfoFronServer();
+// const userId = userInfoFronServer._id
+// console.log(userId)
 
 
 
