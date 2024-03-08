@@ -49,11 +49,27 @@ export default class Api{
                 "PATCH",
                 {
                     name,
-                    job,
+                    about: job,
                 }
             );
             return res;
         } catch (err) {
+            console.log(err);
+        }
+    }
+
+    async addNewCardToServer(name, link) {
+        try {
+            const res = await this._useFetch(
+               "https://around.nomoreparties.co/v1/web_es_11/cards",
+               "POST",
+               {
+                name: name,
+                link: link,
+               }
+            );
+            return res;
+        } catch(err) {
             console.log(err);
         }
     }

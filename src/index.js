@@ -55,17 +55,25 @@ async function infoProfile(userInfoFronServer){
 }
 
 //funcion para agregar lugar
-export function handledAddPlaceFormSubmit() {
+export async function handledAddPlaceFormSubmit() {
   
   const titleValue = document.querySelector(".popup-place__imput-text_title").value;
   const picValue = document.querySelector(".popup-place__imput-text_image").value;
-  const newCard = new Card( {
-    name : titleValue,
-    link : picValue
-  },"#cards-template")
+
+  const dataNewCard = {name: titleValue, link: picValue};
+
+  try {
+    const response = await api.addNewCardToServer(titleValue, picValue);
+    dataNewCard.canBeDelete = true;
+    dataNewCard._id = response._id;
+    const newCard = new Card(dataNewCard, "#cards-template");
+    cardList.setItem(newCard.generateCard());
+    onClosePopupPlaceClick();
+  } catch (err){
+    console.log(err);
+    alert("Se ha producido un error")
+  }
   
-  cardList.setItem(newCard.generateCard());
-  onClosePopupPlaceClick();
 }
 
 //Funcion para inicializar las 6 cartas y manter las funciones dentro de ellas
