@@ -34,7 +34,7 @@ async function initializePage(){
       };
     }),
       renderer: (cardItem) =>{
-          const card = new Card(cardItem, "#cards-template");
+          const card = new Card(cardItem);
           const cardElement = card.generateCard();
           cardList.setItem(cardElement);
       },
@@ -66,7 +66,7 @@ export async function handledAddPlaceFormSubmit() {
     const response = await api.addNewCardToServer(titleValue, picValue);
     dataNewCard.canBeDelete = true;
     dataNewCard._id = response._id;
-    const newCard = new Card(dataNewCard, "#cards-template");
+    const newCard = new Card(dataNewCard);
     cardList.setItem(newCard.generateCard());
     onClosePopupPlaceClick();
   } catch (err){

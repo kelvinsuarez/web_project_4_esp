@@ -2,15 +2,15 @@ import PopupWithImage from "./PopupWithImage.js";
 import { popupConfirmation } from "../utils/constants.js";
 
 export default class Card {
-  constructor(data, cardElement) {
-    this._cardData = data;
-    this._cardElement = cardElement;
+  constructor({name, link}) {
+    this._cardname = name;
+    this._cardlink = link;
     this._popupWhitImage = new PopupWithImage(".image-zoom");
   }
 
   _createCardElement() {
     const cardElement = document
-    .querySelector(this._cardElement)
+    .querySelector("#cards-template")
     .content
     .querySelector(".cards__element")
     .cloneNode(true);
@@ -46,17 +46,17 @@ export default class Card {
   }
 
   _handleImageClick() {
-    this._popupWhitImage.open(this._cardData.link, this._cardData.name);
+    this._popupWhitImage.open(this._cardlink, this._cardname);
   }
 
   generateCard(){
     const createCard = this._createCardElement()
     this._setEventListeners(createCard)
     const elementImage = createCard.querySelector(".cards__element-pic")
-    elementImage.src = this._cardData.link;
+    elementImage.src = this._cardlink;
     const elementText=  createCard.querySelector(".cards__element-text-container")
-    elementText.querySelector(".cards__element-text").textContent = this._cardData.name;
-    elementImage.alt = this._cardData.name
+    elementText.querySelector(".cards__element-text").textContent = this._cardname;
+    elementImage.alt = this._cardname
     return createCard
   }
 
