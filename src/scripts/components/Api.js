@@ -74,4 +74,43 @@ export default class Api{
         }
     }
 
+    async showLikeFromCard(cardId) {
+        try {
+            const res = await this._useFetch(
+                `https://around.nomoreparties.co/v1/web_es_11/cards/likes/${cardId}`,
+                "PUT"
+            );
+
+            return res;
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    async deleteLikeFromCard(cardId){
+        try {
+            const res = await this._useFetch(
+                `https://around.nomoreparties.co/v1/web_es_11/cards/likes/${cardId}`,
+                "DELETE"
+            );
+
+            return res;
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    async deleteCardFromServer(cardId){
+        try {
+            const res = await this._useFetch(
+                `https://around.nomoreparties.co/v1/web_es_11/cards/${cardId}`,
+                "DELETE"
+            );
+
+            return res;
+        } catch (err) {
+            console.log (err);
+        }
+    }
+
 }
