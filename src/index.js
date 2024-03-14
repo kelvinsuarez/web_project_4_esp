@@ -12,6 +12,7 @@ import {
   initialCards,
   cardListSelector,
   settingElement,
+  popupConfirmation
  } from "./scripts/utils/constants.js";
 
 
@@ -34,7 +35,7 @@ async function initializePage(){
       };
     }),
       renderer: (cardItem) =>{
-          const card = new Card(cardItem);
+          const card = new Card(cardItem,{api, popupConfirmation}, userId);
           const cardElement = card.generateCard();
           cardList.setItem(cardElement);
       },
@@ -64,16 +65,19 @@ export async function handledAddPlaceFormSubmit() {
 
   try {
     const response = await api.addNewCardToServer(titleValue, picValue);
+    console.log (response);
     dataNewCard.canBeDelete = true;
     dataNewCard._id = response._id;
-    const newCard = new Card(dataNewCard);
+    const newCard = new Card(dataNewCard, {api, popupConfirmation});
     cardList.setItem(newCard.generateCard());
-    onClosePopupPlaceClick();
+    
+    titleValue = "";
+    picValue = "";
   } catch (err){
     console.log(err);
     alert("Se ha producido un error")
   }
-  
+  onClosePopupPlaceClick();
 }
 
 //Funcion para inicializar las 6 cartas y manter las funciones dentro de ellas
@@ -93,10 +97,10 @@ formList.forEach((formElement)=> {
 agregarEventListeners();
 
 
-// const getCards = await api.getCards();
+const getCards = await api.getCards();
 // const userInfoFronServer= await api.getUserInfoFronServer();
 // const userId = userInfoFronServer._id
-// console.log(userId)
+console.log(getCards)
 
 
 
