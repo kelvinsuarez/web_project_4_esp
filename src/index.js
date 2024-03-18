@@ -58,8 +58,8 @@ async function infoProfile(userInfoFronServer){
 //funcion para agregar lugar
 export async function handledAddPlaceFormSubmit() {
   
-  const titleValue = document.querySelector(".popup-place__imput-text_title").value;
-  const picValue = document.querySelector(".popup-place__imput-text_image").value;
+  let titleValue = document.querySelector(".popup-place__imput-text_title").value;
+  let picValue = document.querySelector(".popup-place__imput-text_image").value;
 
   const dataNewCard = {name: titleValue, link: picValue};
 
