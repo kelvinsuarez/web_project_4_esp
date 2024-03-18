@@ -49,20 +49,24 @@ export default class Card {
     viewImage.addEventListener("click", () => this._handleImageClick());
 
     const trash = this.element.querySelector(".cards__element-trash");
-    trash.addEventListener("click", (evt) =>{
-      const cardElement = evt.currentTarget.closest(".cards__element-trash");
-      if (cardElement){
-        if (popupConfirmation.classList.contains("popup-confirmation-opened")){
-          popupConfirmation.classList.remove("popup-confirmation-opened");
-          const deleteCard = document.querySelector(".popup-confirmation__button-delete");
-          deleteCard.addEventListener("click", () => {
-            this._deleteCard()
-            cardElement.closest(".cards__element").remove();
-            popupConfirmation.classList.add("popup-confirmation-opened")
-          })
+    if (this._canBeDelete) {
+      trash.addEventListener("click", (evt) =>{
+        const cardElement = evt.currentTarget.closest(".cards__element-trash");
+        if (cardElement){
+          if (popupConfirmation.classList.contains("popup-confirmation-opened")){
+            popupConfirmation.classList.remove("popup-confirmation-opened");
+            const deleteCard = document.querySelector(".popup-confirmation__button-delete");
+            deleteCard.addEventListener("click", () => {
+              this._deleteCard()
+              cardElement.closest(".cards__element").remove();
+              popupConfirmation.classList.add("popup-confirmation-opened")
+            })
+          }
         }
-      }
-    })
+      })
+    } else {
+      trash.style.display = "none";
+    }
   }
 
   _handleImageClick() {
