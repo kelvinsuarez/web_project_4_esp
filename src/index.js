@@ -29,7 +29,7 @@ async function initializePage(){
       return {
         name: card.name,
         link: card.link,
-        _id: card.id,
+        _id: card._id,
         canBeDelete: canBeDelete,
         likes: card.likes,
       };
@@ -58,8 +58,8 @@ async function infoProfile(userInfoFronServer){
 //funcion para agregar lugar
 export async function handledAddPlaceFormSubmit() {
   
-  let titleValue = document.querySelector(".popup-place__imput-text_title").value;
-  let picValue = document.querySelector(".popup-place__imput-text_image").value;
+  const titleValue = document.querySelector(".popup-place__imput-text_title").value;
+  const picValue = document.querySelector(".popup-place__imput-text_image").value;
 
   const dataNewCard = {name: titleValue, link: picValue};
 
@@ -71,8 +71,8 @@ export async function handledAddPlaceFormSubmit() {
     const newCard = new Card(dataNewCard, {api, popupConfirmation});
     cardList.setItem(newCard.generateCard());
     
-    titleValue = "";
-    picValue = "";
+    document.querySelector(".popup-place__imput-text_title").value = "";
+    document.querySelector(".popup-place__imput-text_image").value = "";
   } catch (err){
     console.log(err);
     alert("Se ha producido un error")
