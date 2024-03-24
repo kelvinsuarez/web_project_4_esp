@@ -10,7 +10,6 @@ import {popup,
   editProfileImage,
   closeProfileImage,
   closeImage,
-  popupConfirmation,
   inputName,
   inputAcerca,
   inputProfilePic,
@@ -19,6 +18,7 @@ import {popup,
 import Popup from "../components/Popup.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
+import PopupConfirmation from "../components/PopupConfirmation.js";
 import UserInfo from "../components/UserInfo.js";
 import Api from "../components/Api.js";
 
@@ -36,8 +36,11 @@ export const api = new Api (apiKey)
 //instancia de Popup
 export const popupEdit = new Popup ("#popup_container");
 
-//istancia de PopupWithImage
+//instancia de PopupWithImage
 const popupWithImage = new PopupWithImage("#image-zoom_container");
+
+//instancia de PopupConfirmation
+export const popupConfirmation = new PopupConfirmation();
 
 //instancias de PopupWithForm
 const popupFormProfile = new PopupWithForm ("#popup_container", handleProfileFormSubmit);
@@ -121,14 +124,6 @@ export default function agregarEventListeners() {
   //manipuladores de eventos para abrir y cerrar cambiar imagen de perfil
   editProfileImage.addEventListener("click", onEditPicProfileButtonClick);
   closeProfileImage.addEventListener("click", onClosePicProfileClick);
-
-  //manipuladores de eventos para cerrar popup de confirmacion para borrar cartas
-  const closeConfirmationDelete = document.querySelector(".popup-confirmation__icon-close");
-  closeConfirmationDelete.addEventListener("click", ()=>{
-    if(!popupConfirmation.classList.contains("popup-confirmation-opened")){
-      popupConfirmation.classList.add("popup-confirmation-opened");
-    }
-  })
 
  //manipuladores de eventos para cerrar las imagenes agrandadas
   closeImage.forEach(function(closeZoom){

@@ -6,13 +6,12 @@ import {
   onClosePopupPlaceClick, 
   userInfo,
   api,
+  popupConfirmation
  } from "./scripts/utils/utils.js";
 import Section from "./scripts/components/Section.js";
 import { 
-  initialCards,
   cardListSelector,
   settingElement,
-  popupConfirmation
  } from "./scripts/utils/constants.js";
 
 

@@ -30,7 +30,7 @@ export const initialCards = [
 export const popup = document.querySelector("#popup_container"); 
 export const popupPlace = document.querySelector(".popup-place");
 export const zoomImage = document.querySelector("#image-zoom_container");
-export const popupConfirmation = document.querySelector(".popup-confirmation")
+// export const popupConfirmation = document.querySelector(".popup-confirmation")
 
 //botones cerrar ventanas modales
 export const closeImageOut = document.querySelectorAll(".image-zoom");

@@ -1,5 +1,4 @@
 import PopupWithImage from "./PopupWithImage.js";
-import { popupConfirmation } from "../utils/constants.js";
 
 export default class Card {
   constructor({name, link, _id, canBeDelete, likes},
@@ -25,13 +24,16 @@ export default class Card {
   }
 
   _deleteCard(){
-    
+    this._popupConfirmation.loadingAction(true);
     console.log(this._id);
-    this.element.setAttribute("data-id", this._id);
     this._api.deleteCardFromServer(this._id).then(() =>{
       this.element.remove();
+      this._popupConfirmation.close();
     }).catch((err) =>{
       console.log(err);
+    })
+    .finally(() => {
+      this._popupConfirmation.loadingAction(false);
     })
   }
 
@@ -50,19 +52,8 @@ export default class Card {
 
     const trash = this.element.querySelector(".cards__element-trash");
     if (this._canBeDelete) {
-      trash.addEventListener("click", (evt) =>{
-        const cardElement = evt.currentTarget.closest(".cards__element-trash");
-        if (cardElement){
-          if (popupConfirmation.classList.contains("popup-confirmation-opened")){
-            popupConfirmation.classList.remove("popup-confirmation-opened");
-            const deleteCard = document.querySelector(".popup-confirmation__button-delete");
-            deleteCard.addEventListener("click", () => {
-              this._deleteCard()
-              cardElement.closest(".cards__element").remove();
-              popupConfirmation.classList.add("popup-confirmation-opened")
-            })
-          }
-        }
+      trash.addEventListener("click", () => {
+        this._popupConfirmation.open(this._deleteCard.bind(this));
       })
     } else {
       trash.style.display = "none";
