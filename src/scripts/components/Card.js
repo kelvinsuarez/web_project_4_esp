@@ -7,7 +7,7 @@ export default class Card {
     this._cardlink = link;
     this._id = _id;
     this._canBeDelete = canBeDelete;
-    this._likes = likes;
+    this._likes = Array.isArray(likes) ? likes : [];
     this._api = api;
     this._userId = userId
     this._popupConfirmation = popupConfirmation;
@@ -37,14 +37,33 @@ export default class Card {
     })
   }
 
+  async _likeIconToServer() {
+    // this.buttonLike.classList.toggle("cards__element-like-black_on");
+    try {
+      if (
+        this.buttonLikeBlack.classList.contains(
+          "cards__element-like-black_on"
+        )
+      ) {
+        const result = await this._api.showLikeFromCard(this._id);
+        this.buttonLikeBlack.classList.remove("cards__element-like-black_on");
+        this.likeCounter.textContent = result.likes.length;
+      } else {
+        const resultDelete = await this._api.deleteLikeFromCard(this._id);
+        this.buttonLikeBlack.classList.add("cards__element-like-black_on");
+        this.likeCounter.textContent = resultDelete.likes.length;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   _setEventListeners() {
     const like = this.element.querySelector(".cards__element-like");
     const likeCounter = this.element.querySelector(".cards__element-like-counter");
-    like.addEventListener("click", (evt) =>{
-      const likeElement = evt.currentTarget.querySelector(".cards__element-like-black");
-      likeElement.classList.toggle("cards__element-like-black_on");
-      likeCounter.textContent = Number(likeCounter.textContent) + 1
+    this.buttonLike.addEventListener("click", () =>{
+      console.log(this.buttonLikeBlack)
+       this._likeIconToServer()
     });
 
     const viewImage = this.element.querySelector(".cards__element-pic");
@@ -65,13 +84,29 @@ export default class Card {
   }
 
   generateCard(){
-    this.element = this._createCardElement()
-    this._setEventListeners(this.element)
+    this.element = this._createCardElement();
     const elementImage = this.element.querySelector(".cards__element-pic")
     elementImage.src = this._cardlink;
     const elementText=  this.element.querySelector(".cards__element-text-container")
     elementText.querySelector(".cards__element-text").textContent = this._cardname;
     elementImage.alt = this._cardname;
+    this.buttonLike = this.element.querySelector(".cards__element-like");
+    this.buttonLikeBlack = this.buttonLike.querySelector(".cards__element-like-black");
+    this.likeCounter = this.element.querySelector(".cards__element-like-counter");
+    this.likeCounter.textContent = this._likes.length;
+
+    if (this.likeCounter.textContent === "0") {
+      this.likeCounter.style.display = "none";
+    } else {
+      const myLike = this._likes.find((evt) => {
+        return evt._id === this._userId;
+      });
+      if  (myLike) {
+        this.buttonLikeBlack.classList.remove("cards__element-like-black_on")
+      }
+    }
+
+    this._setEventListeners(this.element)
     this.element.setAttribute("data-id", this._id)
     return this.element
   }
