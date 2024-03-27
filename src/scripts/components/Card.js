@@ -59,10 +59,12 @@ export default class Card {
   }
 
   _setEventListeners() {
-    const like = this.element.querySelector(".cards__element-like");
-    const likeCounter = this.element.querySelector(".cards__element-like-counter");
     this.buttonLike.addEventListener("click", () =>{
       console.log(this.buttonLikeBlack)
+      if (this.likeCounter < 1) {
+        console.log(this.likeCounter)
+        this.likeCounter.style.display = "none";
+      }
        this._likeIconToServer()
     });
 

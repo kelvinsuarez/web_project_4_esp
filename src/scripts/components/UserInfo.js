@@ -9,13 +9,13 @@ export default class UserInfo {
         return {
             name: this._dataName.textContent,
             job: this._dataJob.textContent,
-            pic: this._dataPic.getAttribute('src')
+            avatar: this._dataPic.getAttribute('src')
         };
     }
 
-    setUserInfo({name, job, pic}) {
+    setUserInfo({name, job, avatar}) {
         if (name)  this._dataName.textContent = name;
         if (job)  this._dataJob.textContent = job;
-        if (pic)  this._dataPic.setAttribute('src', pic)
+        if (avatar)  this._dataPic.setAttribute('src', avatar)
     }
 }

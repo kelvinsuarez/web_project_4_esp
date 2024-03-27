@@ -59,6 +59,10 @@ export const closeProfileImage = document.querySelector(".popup-image-profile__i
 //constantes de los datos de perfirl
 export const inputName = document.querySelector("#nombre");
 export const inputAcerca = document.querySelector("#acerca");
-export const inputProfilePic = document.querySelector("#url-profile")
+export const inputProfilePic = document.querySelector("#url-profile");
+export const formPopupAvatar = document.querySelector(".popup-image-profile__container");
+export const buttonSaveNewProfileImage = document.querySelector(".popup-image-profile__button-save")
+// export const inpuFormPopupAvatar = formPopupAvatar.querySelector("#url-profile")
+
 
 export const apiKey = "ddd525c3-4e22-45dd-b59e-e1d482e580b4"

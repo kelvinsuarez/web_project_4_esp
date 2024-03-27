@@ -50,7 +50,7 @@ async function infoProfile(userInfoFronServer){
   userInfo.setUserInfo({
     name: userInfoFronServer.name,
     job: userInfoFronServer.about,
-    pic: userInfoFronServer.avatar
+    avatar: userInfoFronServer.avatar
   })
 }
 

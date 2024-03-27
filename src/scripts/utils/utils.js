@@ -13,12 +13,17 @@ import {popup,
   inputName,
   inputAcerca,
   inputProfilePic,
+  formPopupAvatar,
+  buttonSaveNewProfileImage,
+  inpuFormPopupAvatar,
   apiKey,
+  settingElement,
 } from "../utils/constants.js"
 import Popup from "../components/Popup.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupConfirmation from "../components/PopupConfirmation.js";
+import PopupAvatarForm from "../components/PopupAvatarForm.js";
 import UserInfo from "../components/UserInfo.js";
 import Api from "../components/Api.js";
 
@@ -45,7 +50,10 @@ export const popupConfirmation = new PopupConfirmation();
 //instancias de PopupWithForm
 const popupFormProfile = new PopupWithForm ("#popup_container", handleProfileFormSubmit);
 const popupFormAddCard = new PopupWithForm ("#popup-place_container", handledAddPlaceFormSubmit);
-const popupFormProfileImage = new PopupWithForm ("#popup-image-profile_container", handleImageProfileFormSubmit)
+const popupFormProfileImage = new PopupWithForm ("#popup-image-profile_container", handleImageProfileFormSubmit);
+
+//instancia de PopupAvatarForm
+const popupAvatarForm = new PopupAvatarForm();
 
 
 // controlador del boton editar perfil
@@ -86,10 +94,33 @@ export function onClosePopupPlaceClick(){
 
 //funcion para cambiar imagen de perfil
 function handleImageProfileFormSubmit(){
-  userInfo.setUserInfo({
-    pic: inputProfilePic.value,
-  });
-  popupFormProfileImage.close();
+  popupAvatarForm.loadingAction(true);
+  formPopupAvatar.addEventListener("submit", (evt) => {
+    evt.preventDefault();
+    const newAvatarUrl = inputProfilePic.value;
+    console.log(newAvatarUrl)
+    api.updateImageProfile(newAvatarUrl)
+    .then((res) => {
+      userInfo.setUserInfo({avatar: newAvatarUrl});
+      popupAvatarForm.close();
+      return res;
+    })
+    .then(() => {
+      inputProfilePic.value = "";
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      popupAvatarForm.loadingAction(false);
+      enableButtonProfileImage();
+    })
+  })
+}
+
+function enableButtonProfileImage() {
+  buttonSaveNewProfileImage.classList.add(settingElement.buttonSaveOff);
+  buttonSaveNewProfileImage.setAttribute("disabled", true);
 }
 
 // controlador del boton editar foto de perfil
@@ -138,6 +169,9 @@ export default function agregarEventListeners() {
       }
     });
   });
+
+  // manipulador de evento para enviar nueva imagen de perfil
+  buttonSaveNewProfileImage.addEventListener("click", handleImageProfileFormSubmit)
 
 
   // Conecta el manipulador de eventos enviar
