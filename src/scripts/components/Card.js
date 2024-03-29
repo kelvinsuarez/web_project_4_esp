@@ -48,6 +48,7 @@ export default class Card {
         const result = await this._api.showLikeFromCard(this._id);
         this.buttonLikeBlack.classList.remove("cards__element-like-black_on");
         this.likeCounter.textContent = result.likes.length;
+        this.likeCounter.style.display = "flex";
       } else {
         const resultDelete = await this._api.deleteLikeFromCard(this._id);
         this.buttonLikeBlack.classList.add("cards__element-like-black_on");

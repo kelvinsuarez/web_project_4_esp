@@ -93,29 +93,28 @@ export function onClosePopupPlaceClick(){
 }
 
 //funcion para cambiar imagen de perfil
-function handleImageProfileFormSubmit(){
+async function handleImageProfileFormSubmit(){
   popupAvatarForm.loadingAction(true);
-  formPopupAvatar.addEventListener("submit", (evt) => {
-    evt.preventDefault();
-    const newAvatarUrl = inputProfilePic.value;
-    console.log(newAvatarUrl)
-    api.updateImageProfile(newAvatarUrl)
-    .then((res) => {
-      userInfo.setUserInfo({avatar: newAvatarUrl});
-      popupAvatarForm.close();
-      return res;
-    })
-    .then(() => {
-      inputProfilePic.value = "";
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-    .finally(() => {
-      popupAvatarForm.loadingAction(false);
-      enableButtonProfileImage();
-    })
+  
+  const newAvatarUrl = inputProfilePic.value;
+  console.log(newAvatarUrl)
+  await  api
+  .updateImageProfile(newAvatarUrl)
+  .then((res) => {
+    userInfo.setUserInfo({avatar: newAvatarUrl});
+    popupAvatarForm.close();
+    return res;
   })
+  .then(() => {
+    inputProfilePic.value = "";
+  })
+  .catch((err) => {
+      console.log(err);
+  })
+  .finally(() => {
+    popupAvatarForm.loadingAction(false);
+    enableButtonProfileImage();
+  });
 }
 
 function enableButtonProfileImage() {
