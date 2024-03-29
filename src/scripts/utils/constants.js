@@ -45,7 +45,7 @@ export const closeProfileImage = document.querySelector(".popup-image-profile__i
  export const editProfileImage = document.querySelector(".profile__edit-image-button-vector")
  
  // selector de contenedor de cartas
- export const cardListSelector = ".cards";
+ export let cardListSelector = ".cards";
 
  //constante para validador de formulario
  export const settingElement = {

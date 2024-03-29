@@ -25,7 +25,6 @@ export default class Card {
 
   _deleteCard(){
     this._popupConfirmation.loadingAction(true);
-    console.log(this._id);
     this._api.deleteCardFromServer(this._id).then(() =>{
       this.element.remove();
       this._popupConfirmation.close();
@@ -61,9 +60,7 @@ export default class Card {
 
   _setEventListeners() {
     this.buttonLike.addEventListener("click", () =>{
-      console.log(this.buttonLikeBlack)
       if (this.likeCounter < 1) {
-        console.log(this.likeCounter)
         this.likeCounter.style.display = "none";
       }
        this._likeIconToServer()

@@ -31,4 +31,12 @@ export default class Popup{
             }
         })
     }
+
+    loadingAction(isLoading){
+        if(isLoading) {
+            this.closeButton.textContent = "Guardando...";
+        } else {
+            this.closeButton.textContent = "Guardar";
+        }
+    }
 }

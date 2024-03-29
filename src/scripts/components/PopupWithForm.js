@@ -41,4 +41,8 @@ export default class PopupWithForm extends Popup {
     close() {
         super.close();
     }
+
+    loadingAction(isLoading){
+        super.loadingAction(isLoading);
+    }
 }

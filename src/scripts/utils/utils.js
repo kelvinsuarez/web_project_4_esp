@@ -1,5 +1,6 @@
-import { handledAddPlaceFormSubmit } from "../../index.js";
+// import { handledAddPlaceFormSubmit } from "../../index.js";
 import init from "../../index.js";
+import Card from "../components/Card.js";
 import {popup,
   popupPlace,
   closeImageOut,
@@ -13,9 +14,8 @@ import {popup,
   inputName,
   inputAcerca,
   inputProfilePic,
-  formPopupAvatar,
   buttonSaveNewProfileImage,
-  inpuFormPopupAvatar,
+  cardListSelector,
   apiKey,
   settingElement,
 } from "../utils/constants.js"
@@ -48,7 +48,7 @@ const popupWithImage = new PopupWithImage("#image-zoom_container");
 export const popupConfirmation = new PopupConfirmation();
 
 //instancias de PopupWithForm
-const popupFormProfile = new PopupWithForm ("#popup_container", handleProfileFormSubmit);
+export const popupFormProfile = new PopupWithForm ("#popup_container", handleProfileFormSubmit);
 const popupFormAddCard = new PopupWithForm ("#popup-place_container", handledAddPlaceFormSubmit);
 const popupFormProfileImage = new PopupWithForm ("#popup-image-profile_container", handleImageProfileFormSubmit);
 
@@ -74,13 +74,15 @@ async function handleProfileFormSubmit() {
   });
 
   try {
+    popupFormProfile.loadingAction(true);
     const res = await api.saveDataToServer(inputName.value, inputAcerca.value);
     return res;
   }catch (err) {
     console.log(err);
+  } finally {
+    popupFormProfile.loadingAction(false);
+    popupEdit.close();
   }
-  
-  popupEdit.close();
 }
 
 // controlador del boton agregar lugar
@@ -92,12 +94,39 @@ export function onClosePopupPlaceClick(){
   popupFormAddCard.close();
 }
 
+//funcion para agregar lugar
+async function handledAddPlaceFormSubmit() {
+  
+  const titleValue = document.querySelector(".popup-place__imput-text_title").value;
+  const picValue = document.querySelector(".popup-place__imput-text_image").value;
+
+  const dataNewCard = {name: titleValue, link: picValue};
+
+  try {
+    popupFormAddCard.loadingAction(true);
+    const response = await api.addNewCardToServer(titleValue, picValue);
+    dataNewCard.canBeDelete = true;
+    dataNewCard._id = response._id;
+    const newCard = new Card(dataNewCard, {api, popupConfirmation}).generateCard();
+    const cardListContainer = document.querySelector(cardListSelector)
+    cardListContainer.prepend(newCard);
+    
+    document.querySelector(".popup-place__imput-text_title").value = "";
+    document.querySelector(".popup-place__imput-text_image").value = "";
+  } catch (err){
+    console.log(err);
+    alert("Se ha producido un error")
+  } finally {
+    popupFormAddCard.loadingAction(false);
+    onClosePopupPlaceClick();
+  }
+}
+
 //funcion para cambiar imagen de perfil
 async function handleImageProfileFormSubmit(){
   popupAvatarForm.loadingAction(true);
   
   const newAvatarUrl = inputProfilePic.value;
-  console.log(newAvatarUrl)
   await  api
   .updateImageProfile(newAvatarUrl)
   .then((res) => {

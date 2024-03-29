@@ -3,10 +3,9 @@ import Card from "./scripts/components/Card.js"
 import FormValidator from "./scripts/components/FormValidator.js"
 import agregarEventListeners from "./scripts/utils/utils.js";
 import { 
-  onClosePopupPlaceClick, 
   userInfo,
   api,
-  popupConfirmation
+  popupConfirmation,
  } from "./scripts/utils/utils.js";
 import Section from "./scripts/components/Section.js";
 import { 
@@ -54,35 +53,9 @@ async function infoProfile(userInfoFronServer){
   })
 }
 
-//funcion para agregar lugar
-export async function handledAddPlaceFormSubmit() {
-  
-  const titleValue = document.querySelector(".popup-place__imput-text_title").value;
-  const picValue = document.querySelector(".popup-place__imput-text_image").value;
-
-  const dataNewCard = {name: titleValue, link: picValue};
-
-  try {
-    const response = await api.addNewCardToServer(titleValue, picValue);
-    console.log (response);
-    dataNewCard.canBeDelete = true;
-    dataNewCard._id = response._id;
-    const newCard = new Card(dataNewCard, {api, popupConfirmation});
-    cardList.setItem(newCard.generateCard());
-    
-    document.querySelector(".popup-place__imput-text_title").value = "";
-    document.querySelector(".popup-place__imput-text_image").value = "";
-  } catch (err){
-    console.log(err);
-    alert("Se ha producido un error")
-  }
-  onClosePopupPlaceClick();
-}
-
 //Funcion para inicializar las 6 cartas y manter las funciones dentro de ellas
 export default async function init(){
   const userInfoFronServer = await api.getUserInfoFronServer();
-  console.log(userInfoFronServer);
   initializePage();
   infoProfile(userInfoFronServer);
 }
@@ -96,10 +69,10 @@ formList.forEach((formElement)=> {
 agregarEventListeners();
 
 
-const getCards = await api.getCards();
-// const userInfoFronServer= await api.getUserInfoFronServer();
-// const userId = userInfoFronServer._id
-console.log(getCards)
+// const getCards = await api.getCards();
+// // const userInfoFronServer= await api.getUserInfoFronServer();
+// // const userId = userInfoFronServer._id
+// console.log(getCards)
 
 
 
