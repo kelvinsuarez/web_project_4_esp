@@ -6,7 +6,7 @@ export default class PopupWithForm extends Popup {
         this._submitInfo = submitInfo;
         this._formElement = document.querySelector(`${popupSelector} .form-popup`);
         this._popupElement = document.querySelector(".popup");
-        this._inputList = this._formElement.querySelectorAll(".form__imput-text")
+        this._inputList = this._formElement.querySelectorAll(".form-imput-text")
     }
 
     _getImputValues() {
