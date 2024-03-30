@@ -61,7 +61,7 @@ export default async function init(){
 }
 
 // Array de instacias de FormValidator
-const formList = Array.from(document.querySelectorAll(".form__popup"));
+const formList = Array.from(document.querySelectorAll(".form-popup"));
 formList.forEach((formElement)=> {
   const formValidator = new FormValidator (settingElement,formElement);
   formValidator.enableValidation();
