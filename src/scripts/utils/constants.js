@@ -25,7 +25,7 @@ export const closeProfileImage = document.querySelector(".popup-image-profile__i
     submitButtonSelector: ".popup-save",
     buttonSaveOff: "popup__button-save-off",
     inputErrorClass: "form__input-text_type_error",
-    errorClass: "form__input-show-error",
+    errorClass: "form-input-show-error",
 };
 
 //constantes de los datos de perfirl
